@@ -70,7 +70,7 @@
 		6F72504B29B6060800EE2ED4 = {
 			isa = PBXGroup;
 			children = (
-				6F72505629B6060800EE2ED4 /* BtcTurk Case */,
+				6F72505629B6060800EE2ED4 /* Proje-Test */,
 				6F72505529B6060800EE2ED4 /* Products */,
 				6FD37B2129D1D44F001E9D77 /* Frameworks */,
 			);
@@ -84,7 +84,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6F72505629B6060800EE2ED4 /* BtcTurk Case */ = {
+		6F72505629B6060800EE2ED4 /* Proje-Test */ = {
 			isa = PBXGroup;
 			children = (
 				6F88E0BD29BB401000DB50B2 /* Extension */,
@@ -96,7 +96,7 @@
 				6F72506229B6060900EE2ED4 /* LaunchScreen.storyboard */,
 				6F72506529B6060900EE2ED4 /* Info.plist */,
 			);
-			path = "BtcTurk Case";
+			path = "Proje-Test";
 			sourceTree = "<group>";
 		};
 		6F72506D29B6130900EE2ED4 /* View */ = {
