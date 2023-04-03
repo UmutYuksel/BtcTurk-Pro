@@ -13,7 +13,7 @@ struct PairListData : Codable {
 
 struct PairListDataArray : Codable {
     let pair : String
-    let last : Float
+    let last : Decimal
     let dailyPercent : Float
     let volume : Float
     let pairNormalized : String

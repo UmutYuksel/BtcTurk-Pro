@@ -121,7 +121,11 @@ class PairListViewController: UIViewController {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        if viewModel.pairFavoriteList.count == 0 {
+            return 1
+        } else {
+            return 2
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -18,6 +18,14 @@ struct PairListFavoriteModel {
     var pairName : String
    
     init(model : PairListDataArray,favoriteList : [String]){
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 10
+        formatter.minimumIntegerDigits = 1
+        formatter.minimumFractionDigits = 0
+        formatter.groupingSeparator = ","
+        
+        last = formatter.string(from: model.last as NSNumber)!
         pair = String(format: "\(model.numeratorSymbol)\(model.denominatorSymbol)",model.pair)
         pairName = String(format: "\(model.numeratorSymbol)/\(model.denominatorSymbol)",model.pair)
         numeratorSymbol = model.numeratorSymbol
@@ -39,26 +47,5 @@ struct PairListFavoriteModel {
             dailyPercentColor = UIColor.white
         }
         
-        if model.last > 9999 {
-            last = String(format: "%0.f", model.last)
-        } else if model.last > 999 {
-            last = String(format: "%.1f", model.last)
-        } else if model.last > 99 {
-            last = String(format: "%.2f", model.last)
-        } else if model.last > 9 {
-            last = String(format: "%.3f", model.last)
-        } else if model.last > 1 {
-            last = String(format: "%.4f", model.last)
-        } else if model.last > 0.1 {
-            last = String(format: "%.4f", model.last)
-        } else if model.last > 0.01 {
-            last = String(format: "%.5f", model.last)
-        } else if model.last > 0.001 {
-            last = String(format: "%.6f", model.last)
-        } else if model.last > 0.0001 {
-            last = String(format: "%.7f", model.last)
-        } else {
-            last = String(format: "%.8f", model.last)
-        }
     }
 }

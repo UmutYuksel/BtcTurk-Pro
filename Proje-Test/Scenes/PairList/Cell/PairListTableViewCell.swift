@@ -25,7 +25,7 @@ class PairListTableViewCell: UITableViewCell {
     
     func configure(with vm : PairListModel) {
         pairLabel.text = vm.pairName
-        volumeLabel.text = vm.volume
+        volumeLabel.text = "\(vm.volume) \(vm.numeratorSymbol)"
         dailyPercentLabel.text = vm.dailyPercent
         dailyPercentLabel.textColor = vm.dailyPercentColor
         lastLabel.text = vm.last

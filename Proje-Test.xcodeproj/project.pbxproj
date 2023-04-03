@@ -38,7 +38,7 @@
 		6F3B7AA629C45FFC003E97D2 /* PairListFavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListFavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F53C75129B61DA00001FE21 /* PairListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListViewModel.swift; sourceTree = "<group>"; };
 		6F55FB9A29B9C0D000382D21 /* PairChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairChartViewController.swift; sourceTree = "<group>"; };
-		6F72505429B6060800EE2ED4 /* Proje-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Proje-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F72505429B6060800EE2ED4 /* Proje-Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Proje-Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F72505729B6060800EE2ED4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F72505929B6060800EE2ED4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6F72505B29B6060800EE2ED4 /* PairListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		6F72505529B6060800EE2ED4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6F72505429B6060800EE2ED4 /* Proje-1.app */,
+				6F72505429B6060800EE2ED4 /* Proje-Test.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -209,9 +209,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6F72505329B6060800EE2ED4 /* Proje-1 */ = {
+		6F72505329B6060800EE2ED4 /* Proje-Test */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6F72506829B6060900EE2ED4 /* Build configuration list for PBXNativeTarget "Proje-1" */;
+			buildConfigurationList = 6F72506829B6060900EE2ED4 /* Build configuration list for PBXNativeTarget "Proje-Test" */;
 			buildPhases = (
 				6F72505029B6060800EE2ED4 /* Sources */,
 				6F72505129B6060800EE2ED4 /* Frameworks */,
@@ -221,13 +221,13 @@
 			);
 			dependencies = (
 			);
-			name = "Proje-1";
+			name = "Proje-Test";
 			packageProductDependencies = (
 				6F219B2C29B9CB7B00FB7849 /* Charts */,
 				6F219B2F29B9CB9B00FB7849 /* TinyConstraints */,
 			);
 			productName = "BtcTurk Case";
-			productReference = 6F72505429B6060800EE2ED4 /* Proje-1.app */;
+			productReference = 6F72505429B6060800EE2ED4 /* Proje-Test.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -264,7 +264,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6F72505329B6060800EE2ED4 /* Proje-1 */,
+				6F72505329B6060800EE2ED4 /* Proje-Test */,
 			);
 		};
 /* End PBXProject section */
@@ -452,7 +452,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2C2JQAY773;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "BtcTurk Case/Info.plist";
+				INFOPLIST_FILE = "Proje-Test/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -481,7 +481,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2C2JQAY773;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "BtcTurk Case/Info.plist";
+				INFOPLIST_FILE = "Proje-Test/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -512,7 +512,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6F72506829B6060900EE2ED4 /* Build configuration list for PBXNativeTarget "Proje-1" */ = {
+		6F72506829B6060900EE2ED4 /* Build configuration list for PBXNativeTarget "Proje-Test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F72506929B6060900EE2ED4 /* Debug */,

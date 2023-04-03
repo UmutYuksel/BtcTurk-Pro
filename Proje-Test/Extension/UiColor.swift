@@ -13,7 +13,7 @@ extension UIColor {
     static func greyTint() -> UIColor {
             return UIColor.rgb(red: 143, green: 152, blue: 166)
         }
-    static func goldenTint() -> UIColor {
+    static func goldTint() -> UIColor {
             return UIColor.rgb(red: 245, green: 166, blue: 35)
         }
     static func darkBlueTint() -> UIColor {
