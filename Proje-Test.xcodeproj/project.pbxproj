@@ -38,7 +38,7 @@
 		6F3B7AA629C45FFC003E97D2 /* PairListFavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListFavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F53C75129B61DA00001FE21 /* PairListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListViewModel.swift; sourceTree = "<group>"; };
 		6F55FB9A29B9C0D000382D21 /* PairChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairChartViewController.swift; sourceTree = "<group>"; };
-		6F72505429B6060800EE2ED4 /* BtcTurk Case.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BtcTurk Case.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F72505429B6060800EE2ED4 /* Proje-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Proje-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F72505729B6060800EE2ED4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F72505929B6060800EE2ED4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6F72505B29B6060800EE2ED4 /* PairListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		6F72505529B6060800EE2ED4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6F72505429B6060800EE2ED4 /* BtcTurk Case.app */,
+				6F72505429B6060800EE2ED4 /* Proje-1.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -209,9 +209,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6F72505329B6060800EE2ED4 /* BtcTurk Case */ = {
+		6F72505329B6060800EE2ED4 /* Proje-1 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6F72506829B6060900EE2ED4 /* Build configuration list for PBXNativeTarget "BtcTurk Case" */;
+			buildConfigurationList = 6F72506829B6060900EE2ED4 /* Build configuration list for PBXNativeTarget "Proje-1" */;
 			buildPhases = (
 				6F72505029B6060800EE2ED4 /* Sources */,
 				6F72505129B6060800EE2ED4 /* Frameworks */,
@@ -221,13 +221,13 @@
 			);
 			dependencies = (
 			);
-			name = "BtcTurk Case";
+			name = "Proje-1";
 			packageProductDependencies = (
 				6F219B2C29B9CB7B00FB7849 /* Charts */,
 				6F219B2F29B9CB9B00FB7849 /* TinyConstraints */,
 			);
 			productName = "BtcTurk Case";
-			productReference = 6F72505429B6060800EE2ED4 /* BtcTurk Case.app */;
+			productReference = 6F72505429B6060800EE2ED4 /* Proje-1.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -246,7 +246,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6F72504F29B6060800EE2ED4 /* Build configuration list for PBXProject "BtcTurk Case" */;
+			buildConfigurationList = 6F72504F29B6060800EE2ED4 /* Build configuration list for PBXProject "Proje-Test" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -264,7 +264,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6F72505329B6060800EE2ED4 /* BtcTurk Case */,
+				6F72505329B6060800EE2ED4 /* Proje-1 */,
 			);
 		};
 /* End PBXProject section */
@@ -503,7 +503,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6F72504F29B6060800EE2ED4 /* Build configuration list for PBXProject "BtcTurk Case" */ = {
+		6F72504F29B6060800EE2ED4 /* Build configuration list for PBXProject "Proje-Test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F72506629B6060900EE2ED4 /* Debug */,
@@ -512,7 +512,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6F72506829B6060900EE2ED4 /* Build configuration list for PBXNativeTarget "BtcTurk Case" */ = {
+		6F72506829B6060900EE2ED4 /* Build configuration list for PBXNativeTarget "Proje-1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F72506929B6060900EE2ED4 /* Debug */,
