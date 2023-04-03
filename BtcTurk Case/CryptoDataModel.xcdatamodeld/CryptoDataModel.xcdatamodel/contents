@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FavoritesDataModel" representedClassName="FavoritesDataModel" syncable="YES" codeGenerationType="class">
+        <attribute name="dailyPercent" optional="YES" attributeType="String"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="last" optional="YES" attributeType="String"/>
+        <attribute name="pair" optional="YES" attributeType="String"/>
+    </entity>
+</model>
