@@ -22,7 +22,7 @@ class PairListTableViewCell: UITableViewCell {
     @IBOutlet weak var dailyPercentLabel: UILabel!
     @IBOutlet weak var volumeLabel: UILabel!
     @IBOutlet weak var lastLabel: UILabel!
-    
+    //Mark for: configure TableViewCell func
     func configure(with vm : PairListPresitionModel) {
         pairLabel.text = vm.pairName
         volumeLabel.text = "\(vm.volume) \(vm.numeratorSymbol)"

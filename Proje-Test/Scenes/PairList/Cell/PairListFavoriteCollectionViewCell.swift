@@ -16,7 +16,7 @@ class PairListFavoriteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var dailyPercentLabel: UILabel!
     
     
-    
+    //Mark for: Configure CollectionViewCell func
     func configure(with vm : PairListFavoritePresitionModel) {
         pairNameLabel.text = vm.pairName
         dailyPercentLabel.text = vm.dailyPercent

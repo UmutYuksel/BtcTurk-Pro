@@ -9,7 +9,7 @@ import Foundation
 import Charts
 
 class PairChartViewModel {
-    
+    //Mark for: Variables
     var chartsDataList : PairChartData?
     var dataUpdatedCallBack : (([ChartDataEntry])->())?
     let apiWithTime = "https://graph-api.btcturk.com/v1/klines/history?from="
@@ -18,12 +18,14 @@ class PairChartViewModel {
     var selectedDenominator : String?
     let unixTimeStamp : Int = Int(Date().timeIntervalSince1970)
     
+    //Mark for: Functions
+    
+    //Mark for: The function whose parameters are set to the getChartsData function
     func getChartDataTime(from: String, to: String,chartPairName: String) {
-        
         let apiURLWithTime = "\(apiWithTime)\(from)&resolution=60&to=\(to)&symbol=\(chartPairName)"
         getChartsData(with: apiURLWithTime)
     }
-    
+    //Mark for: Function that pulls graphics data through the api
     func getChartsData(with urlString: String) {
         
         PairChartAPI().getPairChartData(url: URL(string: urlString)!) { chartsData in
@@ -38,7 +40,7 @@ class PairChartViewModel {
             }
         }
     }
-    
+    //Mark for: The function that maps the data received via the api for chart
     func mapToChartModel() -> [ChartDataEntry] {
         var chartDataArray = [ChartDataEntry]()
         
@@ -54,52 +56,41 @@ class PairChartViewModel {
         }
         return chartDataArray
     }
-    
-    func getOneYearData(selectedPairName: String) {
-        let oneYearAgoTimeStamp = unixTimeStamp - 31556926
-        let unixTimeStampString = String(unixTimeStamp)
-        let oneYearAgoTimeStampString = String(oneYearAgoTimeStamp)
-        let pairName = selectedPairName
-        getChartDataTime(from: oneYearAgoTimeStampString, to: unixTimeStampString,chartPairName: pairName)
+    //Mark for: The function that is triggered when the segmentedControl's value changes
+    func segmentControlValueChange(selectedSegmentIndex: Int, selectedPairName: String) {
+        
+        switch selectedSegmentIndex {
+        case 0:
+            getChartDataWithTime(for: selectedPairName, to: .oneYear)
+        case 1:
+            getChartDataWithTime(for: selectedPairName, to: .sixMonths)
+        case 2:
+            getChartDataWithTime(for: selectedPairName, to: .threeMonths)
+        case 3:
+            getChartDataWithTime(for: selectedPairName, to: .oneMonth)
+        case 4:
+            getChartDataWithTime(for: selectedPairName, to: .fiveDays)
+        case 5:
+            getChartDataWithTime(for: selectedPairName, to: .oneDay)
+        default:
+            getChartDataWithTime(for: selectedPairName, to: .fiveDays)
+        }
     }
     
-    func getSixMonthData(selectedPairName: String) {
-        let SixMonthAgoTimeStamp = unixTimeStamp - 15778458
-        let unixTimeStampString = String(unixTimeStamp)
-        let SixMonthAgoTimeStampString = String(SixMonthAgoTimeStamp)
-        let pairName = selectedPairName
-        getChartDataTime(from: SixMonthAgoTimeStampString, to: unixTimeStampString,chartPairName: pairName)
+    //Mark for: The function where the parameters of the getChartDataTime function are set
+    func getChartDataWithTime(for selectedPairName: String, to timeRange: ChartTimeRange) {
+        let fromTimeStamp = unixTimeStamp - Int(timeRange.rawValue)
+        let fromTimeStampString = String(fromTimeStamp)
+        let toTimeStampString = String(unixTimeStamp)
+        getChartDataTime(from: fromTimeStampString, to: toTimeStampString, chartPairName: selectedPairName)
     }
     
-    func getThreeMonthData(selectedPairName: String) {
-        let threeMonthAgoTimeStamp = unixTimeStamp - 7889229
-        let unixTimeStampString = String(unixTimeStamp)
-        let threeMonthAgoTimeStampString = String(threeMonthAgoTimeStamp)
-        let pairName = selectedPairName
-        getChartDataTime(from: threeMonthAgoTimeStampString, to: unixTimeStampString,chartPairName: pairName)
-    }
-    
-    func getOneMonthData(selectedPairName: String) {
-        let oneMonthAgoTimeStamp = unixTimeStamp - 2629743
-        let unixTimeStampString = String(unixTimeStamp)
-        let oneMonthAgoTimeStampString = String(oneMonthAgoTimeStamp)
-        let pairName = selectedPairName
-        getChartDataTime(from: oneMonthAgoTimeStampString, to: unixTimeStampString,chartPairName: pairName)
-    }
-    
-    func getFiveDayData(selectedPairName: String) {
-        let fiveDayAgoTimeStamp = unixTimeStamp - 432000
-        let unixTimeStampString = String(unixTimeStamp)
-        let fiveDayAgoTimeStampString = String(fiveDayAgoTimeStamp)
-        let pairName = selectedPairName
-        getChartDataTime(from: fiveDayAgoTimeStampString, to: unixTimeStampString,chartPairName: pairName)
-    }
-    
-    func getOneDayData(selectedPairName: String) {
-        let oneDayAgoTimeStamp = unixTimeStamp - 86400
-        let unixTimeStampString = String(unixTimeStamp)
-        let oneDayAgoTimeStampString = String(oneDayAgoTimeStamp)
-        let pairName = selectedPairName
-        getChartDataTime(from: oneDayAgoTimeStampString, to: unixTimeStampString,chartPairName: pairName)
+    enum ChartTimeRange: TimeInterval {
+        case oneYear = 31556926
+        case sixMonths = 15778458
+        case threeMonths = 7889229
+        case oneMonth = 2629743
+        case fiveDays = 432000
+        case oneDay = 86400
     }
 }

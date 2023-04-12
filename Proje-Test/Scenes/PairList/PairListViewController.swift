@@ -10,21 +10,20 @@ import UIKit
 class PairListViewController: UIViewController {
     //Mark for: Variables
     @IBOutlet weak var favoriteLabel: UILabel!
-    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     var viewModel = PairListViewModel()
     
     //Mark for: Functions
-    fileprivate func registerTableView() {
+    fileprivate func registerViews() {
         tableView.delegate = self
         tableView.dataSource = self
         collectionView.delegate = self
         collectionView.dataSource = self
         tableView.sectionHeaderTopPadding = 0
     }
-    
+    //Mark for: SegmentedControl adjust func
     fileprivate func adjustSegmentedControl() {
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
@@ -35,7 +34,7 @@ class PairListViewController: UIViewController {
         viewModel.getFavoritesFromUserDefaults()
         viewModel.getPairList()
     }
-    
+    //Mark for: SegmentedControl change segment action
     @IBAction func didChangeSegment(_ sender: UISegmentedControl) {
         let selectedSegmentIndex = sender.selectedSegmentIndex
         viewModel.segmentControlValueChange(selectedSegmentIndex: selectedSegmentIndex)
@@ -43,15 +42,11 @@ class PairListViewController: UIViewController {
         collectionView.reloadData()
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
-    }
-    
     fileprivate func  bindViewModel() {
         viewModel.dataUpdatedCallback = {
             self.tableView.reloadData()
             self.collectionView.reloadData()
-            if self.viewModel.pairFavoriteList.count == 0 {
+            if self.viewModel.pushFavorites().count == 0 {
                 self.collectionView.isHidden = true
                 self.favoriteLabel.isHidden = true
             } else {
@@ -90,19 +85,9 @@ class PairListViewController: UIViewController {
         lblPairs.text = "Pairs"
         return view
     }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
-    }
-    
-    //Mark for: Tableview cell's height adjusment
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerTableView()
+        registerViews()
         bindViewModel()
         adjustSegmentedControl()
         getApiResult()
@@ -114,48 +99,36 @@ extension PairListViewController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "PairListCell", for: indexPath) as! PairListTableViewCell
-        let pairAtIndex = viewModel.cryptoAtIndex(indexPath.row)
+        let pairAtIndex = viewModel.pairAtIndex(indexPath.row)
         cell.configure(with: pairAtIndex)
         cell.btnFavoritePressed = {
             self.viewModel.didTapFavorite(at: indexPath.row)
         }
         return cell
     }
-    
-    
     //Mark For: Adjustment how many cells in sections
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.filteredPairList.count
     }
 }
 
-extension PairListViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+extension PairListViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+    //Mark For: Adjustment how many cells in sections
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.getFavorites().count
+        return viewModel.pushFavorites().count
     }
-    
+    //Mark For: CollectionView cells adjusment
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let favoriteCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PairListFavoriteCell", for: indexPath) as! PairListFavoriteCollectionViewCell
-        let favoriteList = viewModel.getFavorites()[indexPath.row]
+        let favoriteList = viewModel.pushFavorites()[indexPath.row]
         favoriteCell.configure(with: favoriteList)
         return favoriteCell
     }
-    
+    //Mark for: CollectionView selected cell adjustment
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.selectedPair = viewModel.getFavorites()[indexPath.row].pair
-        viewModel.numeratorSymbol = viewModel.getFavorites()[indexPath.row].numeratorSymbol
-        viewModel.denominatorSymbol = viewModel.getFavorites()[indexPath.row].denominatorSymbol
+        viewModel.selectedPair = viewModel.pushFavorites()[indexPath.row].pair
+        viewModel.numeratorSymbol = viewModel.pushFavorites()[indexPath.row].numeratorSymbol
+        viewModel.denominatorSymbol = viewModel.pushFavorites()[indexPath.row].denominatorSymbol
         performSegue(withIdentifier: "pairCharts", sender: self)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: 20, height: 70)
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 85, height: 65)
-    }
-    
-    
-    
 }

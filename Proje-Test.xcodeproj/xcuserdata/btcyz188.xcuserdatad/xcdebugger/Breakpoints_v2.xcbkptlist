@@ -646,8 +646,8 @@
             filePath = "Proje-Test/Scenes/PairList/PairListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "didTapFavorite(at:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -662,8 +662,8 @@
             filePath = "Proje-Test/Scenes/PairList/PairListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "getApiResult()"
             landmarkType = "7">
          </BreakpointContent>
@@ -678,8 +678,8 @@
             filePath = "Proje-Test/Scenes/PairList/PairListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "getApiResult()"
             landmarkType = "7">
          </BreakpointContent>
@@ -710,9 +710,9 @@
             filePath = "Proje-Test/Scenes/PairList/PairListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "getFavorites()"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "pushFavorites()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -726,9 +726,9 @@
             filePath = "Proje-Test/Scenes/PairList/PairListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "getFavorites()"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "pushFavorites()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -742,8 +742,8 @@
             filePath = "Proje-Test/Scenes/PairList/PairListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -758,8 +758,8 @@
             filePath = "Proje-Test/Scenes/PairList/PairListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "collectionView(_:numberOfItemsInSection:)"
             landmarkType = "7">
          </BreakpointContent>

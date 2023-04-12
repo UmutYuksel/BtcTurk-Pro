@@ -93,25 +93,16 @@
 		6F72505629B6060800EE2ED4 /* Proje-Test */ = {
 			isa = PBXGroup;
 			children = (
+				6FCA2DA029E6E56D00EFD647 /* AppDelegate */,
 				6F88E0BD29BB401000DB50B2 /* Extension */,
 				6F8057AF29D5A8220028D3A6 /* Scenes */,
 				6F72507229B614FF00EE2ED4 /* Service */,
-				6F72506D29B6130900EE2ED4 /* View */,
 				6F72505D29B6060800EE2ED4 /* Main.storyboard */,
 				6F72506029B6060900EE2ED4 /* Assets.xcassets */,
 				6F72506229B6060900EE2ED4 /* LaunchScreen.storyboard */,
 				6F72506529B6060900EE2ED4 /* Info.plist */,
 			);
 			path = "Proje-Test";
-			sourceTree = "<group>";
-		};
-		6F72506D29B6130900EE2ED4 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6F72505729B6060800EE2ED4 /* AppDelegate.swift */,
-				6F72505929B6060800EE2ED4 /* SceneDelegate.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		6F72507229B614FF00EE2ED4 /* Service */ = {
@@ -155,7 +146,6 @@
 		6F8057B129D5A8440028D3A6 /* PairChart */ = {
 			isa = PBXGroup;
 			children = (
-				6FC9741729D5AAAE00C1242F /* Model */,
 				6FA9DE6829BB6B85007F86B7 /* PairChartViewModel.swift */,
 				6F55FB9A29B9C0D000382D21 /* PairChartViewController.swift */,
 			);
@@ -206,13 +196,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		6FC9741729D5AAAE00C1242F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		6FC9741829D5B12900C1242F /* PairList */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +212,15 @@
 				6F88E0C229BB664900DB50B2 /* PairChartData.swift */,
 			);
 			path = PairChart;
+			sourceTree = "<group>";
+		};
+		6FCA2DA029E6E56D00EFD647 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				6F72505729B6060800EE2ED4 /* AppDelegate.swift */,
+				6F72505929B6060800EE2ED4 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 		6FD37B2129D1D44F001E9D77 /* Frameworks */ = {
@@ -490,7 +482,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Proje-Test/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -519,7 +511,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Proje-Test/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

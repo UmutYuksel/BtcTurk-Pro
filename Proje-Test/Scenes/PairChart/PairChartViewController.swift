@@ -11,16 +11,16 @@ import UIKit
 import TinyConstraints
 
 class PairChartViewController : UIViewController {
-    
+    //Mark for: Variables
     @IBOutlet weak var titleLabel: UINavigationItem!
     @IBOutlet weak var btnBack: UIBarButtonItem!
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var closeLabel: UILabel!
-    @IBOutlet weak var btnTimeStackView: UIStackView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var pairChartNavBar: UINavigationBar!
-   
-   
     var viewModel = PairChartViewModel()
+    
+    //Mark for: Functions
     
     //Mark for: LineChartView adjustment func
     func editChartView() {
@@ -49,39 +49,15 @@ class PairChartViewController : UIViewController {
         lineChartView.legend.enabled = false
         lineChartView.doubleTapToZoomEnabled = false
         lineChartView.setViewPortOffsets(left: 20, top: 20, right: 50, bottom: 20)
+        lineChartView.delegate = self
     }
-    
-    func editView() {
+    //Mark for: set view Title
+    func setTitle() {
         titleLabel.title = "\(viewModel.selectedNumerator ?? "")/\(viewModel.selectedDenominator ?? "")"
-        btnTimeStackView.layer.cornerRadius = 5
     }
-    
+    //Mark for: viewDidLoad get data from api func
     func getChartDataFromAPI() {
-        viewModel.getFiveDayData(selectedPairName: viewModel.selectedPair!)
-    }
-    
-    @IBAction func btnOneYear(_ sender: Any) {
-        viewModel.getOneYearData(selectedPairName: viewModel.selectedPair!)
-    }
-    
-    @IBAction func btnSixMonth(_ sender: Any) {
-        viewModel.getSixMonthData(selectedPairName: viewModel.selectedPair!)
-    }
-    
-    @IBAction func btnThreeMonth(_ sender: Any) {
-        viewModel.getThreeMonthData(selectedPairName: viewModel.selectedPair!)
-    }
-    
-    @IBAction func btnOneMonth(_ sender: Any) {
-        viewModel.getOneMonthData(selectedPairName: viewModel.selectedPair!)
-    }
-    
-    @IBAction func btnFiveDay(_ sender: Any) {
-        viewModel.getFiveDayData(selectedPairName: viewModel.selectedPair!)
-    }
-    
-    @IBAction func btnOneDay(_ sender: Any) {
-        viewModel.getOneDayData(selectedPairName: viewModel.selectedPair!)
+        viewModel.getChartDataTime(from: String(Int(viewModel.unixTimeStamp - 432000)), to: String(viewModel.unixTimeStamp), chartPairName: viewModel.selectedPair!)
     }
    
     func bindViewModel() {
@@ -91,13 +67,18 @@ class PairChartViewController : UIViewController {
         }
     }
     
+    //Mark for: SegmentedControl change segment action
+    @IBAction func segmentedControlValueChange(_ sender: UISegmentedControl) {
+        let selectedSegmentIndex = sender.selectedSegmentIndex
+        viewModel.segmentControlValueChange(selectedSegmentIndex: selectedSegmentIndex,selectedPairName: viewModel.selectedPair!)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
         getChartDataFromAPI()
-        lineChartView.delegate = self
         editChartView()
-        editView()
+        setTitle()
     }
 }
 
