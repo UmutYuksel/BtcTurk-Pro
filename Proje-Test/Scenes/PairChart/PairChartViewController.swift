@@ -21,10 +21,8 @@ class PairChartViewController : UIViewController {
    
    
     var viewModel = PairChartViewModel()
-    func getVariableFromViewModel() {
-        
-    }
     
+    //Mark for: LineChartView adjustment func
     func editChartView() {
         lineChartView.backgroundColor = UIColor.chartBackground()
         lineChartView.chartDescription.enabled = false
@@ -36,7 +34,7 @@ class PairChartViewController : UIViewController {
         lineChartView.xAxis.labelTextColor = UIColor.white
         lineChartView.xAxis.labelPosition = .bottom
         lineChartView.xAxis.setLabelCount(5, force: false)
-        lineChartView.xAxis.valueFormatter = ChartFormatter()
+        lineChartView.xAxis.valueFormatter = ChartDateFormatter()
         lineChartView.rightAxis.labelFont = .boldSystemFont(ofSize: 10)
         lineChartView.rightAxis.labelTextColor = UIColor.white
         lineChartView.rightAxis.setLabelCount(6, force: false)
@@ -59,12 +57,7 @@ class PairChartViewController : UIViewController {
     }
     
     func getChartDataFromAPI() {
-        let unixTimeStamp : Int = Int(Date().timeIntervalSince1970)
-        let oneYearAgoTimeStamp = unixTimeStamp - 432000
-        let unixTimeStampString = String(unixTimeStamp)
-        let oneYearAgoTimeStampString = String(oneYearAgoTimeStamp)
-        let selectedCoinName = viewModel.selectedPair
-        viewModel.getChartDataTime(from: oneYearAgoTimeStampString, to: unixTimeStampString,chartPairName: selectedCoinName!)
+        viewModel.getFiveDayData(selectedPairName: viewModel.selectedPair!)
     }
     
     @IBAction func btnOneYear(_ sender: Any) {
@@ -100,7 +93,6 @@ class PairChartViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         bindViewModel()
         getChartDataFromAPI()
         lineChartView.delegate = self
@@ -146,15 +138,3 @@ extension PairChartViewController : ChartViewDelegate {
     
 }
 
-class ChartFormatter: NSObject, AxisValueFormatter {
-    let dateFormatter = DateFormatter()
-    
-    override init() {
-        super.init()
-        dateFormatter.dateFormat = "dd/MM"
-    }
-    
-    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return dateFormatter.string(from: Date(timeIntervalSince1970: value))
-    }
-}

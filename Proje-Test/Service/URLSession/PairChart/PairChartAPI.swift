@@ -9,7 +9,7 @@ import Foundation
 
 struct PairChartAPI {
     
-    func getChartData(url: URL, completion: @escaping (PairChartData?) -> ()) {
+    func getPairChartData(url: URL, completion: @escaping (PairChartData?) -> ()) {
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             
@@ -21,7 +21,7 @@ struct PairChartAPI {
                     completion(cryptoChartData)
                     
             } else {
-                print(error?.localizedDescription)
+                print(error!.localizedDescription)
                 completion(nil)
             }
         }.resume()

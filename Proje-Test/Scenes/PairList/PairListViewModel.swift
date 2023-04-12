@@ -8,27 +8,30 @@
 import Foundation
 import UIKit
 
+//struct PairListSection {
+//    let title = String
+//    let cellType = String
+//    let cellHeight
+//}
+
 
 
 class PairListViewModel {
     var pairFavoriteList = [String]()
     var pairList = [PairListDataArray]()
     var filteredPairList = [PairListDataArray]()
-    var filteredFavoriteList = [String]()
     var dataUpdatedCallback : (()->())?
     let apiUrl = URL(string: "https://api.btcturk.com/api/v2/ticker")!
-    var didSelectRowAt : ((Int) -> ())?
     var selectedPair : String?
     var numeratorSymbol : String?
     var denominatorSymbol : String?
-    var selectedFavorite : Int?
+    var viewController = PairListViewController()
+    
     
     
     func filterPairList(denominatorName: String) {
         if denominatorName == "ALL" {
-            for items in pairList {
-                filteredPairList.append(items)
-            }
+            filteredPairList = pairList
         } else {
             filteredPairList = pairList.filter { items in
                 return items.denominatorSymbol == denominatorName
@@ -37,7 +40,7 @@ class PairListViewModel {
     }
     
     func getPairList() {
-        PairListAPI().getCryptoData(url: apiUrl) { cryptoData in
+        PairListAPI().getPairListData(url: apiUrl) { cryptoData in
             if let cryptoData = cryptoData {
                 self.pairList = cryptoData.data
                 let denominatorName = UserDefaults.standard.string(forKey: "selectedDenominatorName")
@@ -63,22 +66,19 @@ class PairListViewModel {
         self.dataUpdatedCallback?()
     }
     
-    func numberOfRowsInSection() -> Int {
-        return self.filteredPairList.count
-    }
-    
-    func cryptoAtIndex(_ index: Int) -> PairListModel {
+    func cryptoAtIndex(_ index: Int) -> PairListPresitionModel {
         let crypto = self.filteredPairList[index]
-        return PairListModel(model: crypto,favoriteList: pairFavoriteList)
+        return PairListPresitionModel(model: crypto,favoriteList: pairFavoriteList)
     }
     
-    func getFavorites() -> [PairListFavoriteModel] {
-        var favoriteArray = [PairListFavoriteModel]()
+    func getFavorites() -> [PairListFavoritePresitionModel] {
+        var favoriteArray = [PairListFavoritePresitionModel]()
         for pairSymbol in pairFavoriteList {
             if let favorite = self.filteredPairList.first(where: {$0.pair == pairSymbol}) {
-                favoriteArray.append(PairListFavoriteModel(model: favorite , favoriteList: pairFavoriteList))
+                favoriteArray.append(PairListFavoritePresitionModel(model: favorite , favoriteList: pairFavoriteList))
             }
         }
+        
         return favoriteArray
     }
     
@@ -88,6 +88,39 @@ class PairListViewModel {
             for favorite in favoriteArray {
                 pairFavoriteList.append(favorite)
             }
+            print(pairFavoriteList)
         }
     }
+    
+    func segmentControlValueChange(selectedSegmentIndex : Int) {
+        if selectedSegmentIndex == 0 {
+            filterPairList(denominatorName: "TRY")
+            UserDefaults.standard.set(selectedSegmentIndex, forKey: "selectedSegmentIndex")
+            UserDefaults.standard.set("TRY", forKey: "selectedDenominatorName")
+        } else if selectedSegmentIndex == 1 {
+            filterPairList(denominatorName: "USDT")
+            UserDefaults.standard.set(selectedSegmentIndex, forKey: "selectedSegmentIndex")
+            UserDefaults.standard.set("USDT", forKey: "selectedDenominatorName")
+        } else if selectedSegmentIndex == 2 {
+            filterPairList(denominatorName: "BTC")
+            UserDefaults.standard.set(selectedSegmentIndex, forKey: "selectedSegmentIndex")
+            UserDefaults.standard.set("BTC", forKey: "selectedDenominatorName")
+        } else if selectedSegmentIndex == 3 {
+            filterPairList(denominatorName: "ALL")
+            UserDefaults.standard.set(selectedSegmentIndex, forKey: "selectedSegmentIndex")
+            UserDefaults.standard.set("ALL", forKey: "selectedDenominatorName")
+        }
+        //        let filter = denominatorFilter(rawValue: <#T##Int#>)
+    }
+    
+    //    enum denominatorFilter : Int {
+    //        case TRY = 0
+    //
+    //        var symbol : String {
+    //            switch self {
+    //            case .TRY : return "TRY"
+    //            }
+    //        }
+    //
+    //    }
 }

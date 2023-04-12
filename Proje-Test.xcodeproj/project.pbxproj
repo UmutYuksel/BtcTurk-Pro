@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6F039F6029C361C700F19593 /* PairListFavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F039F5E29C361C700F19593 /* PairListFavoriteTableViewCell.swift */; };
-		6F1F376F29D3215E00AC51FD /* PairListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1F376E29D3215E00AC51FD /* PairListModel.swift */; };
-		6F1F377129D3224200AC51FD /* PairListFavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1F377029D3224200AC51FD /* PairListFavoriteModel.swift */; };
+		6F1F376F29D3215E00AC51FD /* PairListPresitionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1F376E29D3215E00AC51FD /* PairListPresitionModel.swift */; };
+		6F1F377129D3224200AC51FD /* PairListFavoritePresitionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1F377029D3224200AC51FD /* PairListFavoritePresitionModel.swift */; };
 		6F219B2D29B9CB7B00FB7849 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 6F219B2C29B9CB7B00FB7849 /* Charts */; };
 		6F219B3029B9CB9B00FB7849 /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 6F219B2F29B9CB9B00FB7849 /* TinyConstraints */; };
 		6F219B3229B9D45B00FB7849 /* PairChartAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F219B3129B9D45B00FB7849 /* PairChartAPI.swift */; };
@@ -28,12 +27,15 @@
 		6FA0691B29B75A40004EC605 /* PairListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0691A29B75A40004EC605 /* PairListData.swift */; };
 		6FA76BD229B8CE9E00BFA096 /* UiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA76BD129B8CE9E00BFA096 /* UiColor.swift */; };
 		6FA9DE6929BB6B85007F86B7 /* PairChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA9DE6829BB6B85007F86B7 /* PairChartViewModel.swift */; };
+		6FB0556629DD67910009E540 /* ChartDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB0556529DD67910009E540 /* ChartDateFormatter.swift */; };
+		6FC8DB3F29DEA00900278166 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6FC8DB3E29DEA00900278166 /* Alamofire */; };
+		6FC8DB4429DEA1A700278166 /* PairListApiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC8DB4329DEA1A700278166 /* PairListApiData.swift */; };
+		6FC8DB4629DEA21100278166 /* PairListAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC8DB4529DEA21100278166 /* PairListAlamofire.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6F039F5E29C361C700F19593 /* PairListFavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListFavoriteTableViewCell.swift; sourceTree = "<group>"; };
-		6F1F376E29D3215E00AC51FD /* PairListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListModel.swift; sourceTree = "<group>"; };
-		6F1F377029D3224200AC51FD /* PairListFavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListFavoriteModel.swift; sourceTree = "<group>"; };
+		6F1F376E29D3215E00AC51FD /* PairListPresitionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListPresitionModel.swift; sourceTree = "<group>"; };
+		6F1F377029D3224200AC51FD /* PairListFavoritePresitionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListFavoritePresitionModel.swift; sourceTree = "<group>"; };
 		6F219B3129B9D45B00FB7849 /* PairChartAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairChartAPI.swift; sourceTree = "<group>"; };
 		6F3B7AA629C45FFC003E97D2 /* PairListFavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListFavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F53C75129B61DA00001FE21 /* PairListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListViewModel.swift; sourceTree = "<group>"; };
@@ -52,6 +54,9 @@
 		6FA0691A29B75A40004EC605 /* PairListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListData.swift; sourceTree = "<group>"; };
 		6FA76BD129B8CE9E00BFA096 /* UiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiColor.swift; sourceTree = "<group>"; };
 		6FA9DE6829BB6B85007F86B7 /* PairChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairChartViewModel.swift; sourceTree = "<group>"; };
+		6FB0556529DD67910009E540 /* ChartDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDateFormatter.swift; sourceTree = "<group>"; };
+		6FC8DB4329DEA1A700278166 /* PairListApiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListApiData.swift; sourceTree = "<group>"; };
+		6FC8DB4529DEA21100278166 /* PairListAlamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListAlamofire.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FC8DB3F29DEA00900278166 /* Alamofire in Frameworks */,
 				6F219B2D29B9CB7B00FB7849 /* Charts in Frameworks */,
 				6F219B3029B9CB9B00FB7849 /* TinyConstraints in Frameworks */,
 			);
@@ -111,8 +117,8 @@
 		6F72507229B614FF00EE2ED4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				6FC9741929D5B13700C1242F /* PairChart */,
-				6FC9741829D5B12900C1242F /* PairList */,
+				6FC8DB4129DEA03B00278166 /* Alamofire */,
+				6FC8DB4029DEA02100278166 /* URLSession */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -120,8 +126,8 @@
 		6F7496CB29D5A97C00147D64 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6F1F376E29D3215E00AC51FD /* PairListModel.swift */,
-				6F1F377029D3224200AC51FD /* PairListFavoriteModel.swift */,
+				6F1F376E29D3215E00AC51FD /* PairListPresitionModel.swift */,
+				6F1F377029D3224200AC51FD /* PairListFavoritePresitionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,8 +166,35 @@
 			isa = PBXGroup;
 			children = (
 				6FA76BD129B8CE9E00BFA096 /* UiColor.swift */,
+				6FB0556529DD67910009E540 /* ChartDateFormatter.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		6FC8DB4029DEA02100278166 /* URLSession */ = {
+			isa = PBXGroup;
+			children = (
+				6FC9741829D5B12900C1242F /* PairList */,
+				6FC9741929D5B13700C1242F /* PairChart */,
+			);
+			path = URLSession;
+			sourceTree = "<group>";
+		};
+		6FC8DB4129DEA03B00278166 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				6FC8DB4229DEA19400278166 /* PairList */,
+			);
+			path = Alamofire;
+			sourceTree = "<group>";
+		};
+		6FC8DB4229DEA19400278166 /* PairList */ = {
+			isa = PBXGroup;
+			children = (
+				6FC8DB4329DEA1A700278166 /* PairListApiData.swift */,
+				6FC8DB4529DEA21100278166 /* PairListAlamofire.swift */,
+			);
+			path = PairList;
 			sourceTree = "<group>";
 		};
 		6FC9741529D5A9F300C1242F /* Cell */ = {
@@ -169,7 +202,6 @@
 			children = (
 				6F72506B29B60FE600EE2ED4 /* PairListTableViewCell.swift */,
 				6F3B7AA629C45FFC003E97D2 /* PairListFavoriteCollectionViewCell.swift */,
-				6F039F5E29C361C700F19593 /* PairListFavoriteTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -225,6 +257,7 @@
 			packageProductDependencies = (
 				6F219B2C29B9CB7B00FB7849 /* Charts */,
 				6F219B2F29B9CB9B00FB7849 /* TinyConstraints */,
+				6FC8DB3E29DEA00900278166 /* Alamofire */,
 			);
 			productName = "BtcTurk Case";
 			productReference = 6F72505429B6060800EE2ED4 /* Proje-Test.app */;
@@ -259,6 +292,7 @@
 				6F219B2B29B9CB7B00FB7849 /* XCRemoteSwiftPackageReference "Charts" */,
 				6F219B2E29B9CB9B00FB7849 /* XCRemoteSwiftPackageReference "TinyConstraints" */,
 				6FD37B1E29D1D3EC001E9D77 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+				6FC8DB3D29DEA00900278166 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 6F72505529B6060800EE2ED4 /* Products */;
 			projectDirPath = "";
@@ -288,17 +322,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FA0691929B7519B004EC605 /* PairListAPI.swift in Sources */,
-				6F1F377129D3224200AC51FD /* PairListFavoriteModel.swift in Sources */,
+				6F1F377129D3224200AC51FD /* PairListFavoritePresitionModel.swift in Sources */,
 				6F72505C29B6060800EE2ED4 /* PairListViewController.swift in Sources */,
 				6F72506C29B60FE600EE2ED4 /* PairListTableViewCell.swift in Sources */,
-				6F1F376F29D3215E00AC51FD /* PairListModel.swift in Sources */,
+				6F1F376F29D3215E00AC51FD /* PairListPresitionModel.swift in Sources */,
 				6F53C75229B61DA00001FE21 /* PairListViewModel.swift in Sources */,
+				6FC8DB4429DEA1A700278166 /* PairListApiData.swift in Sources */,
 				6F3B7AA729C45FFC003E97D2 /* PairListFavoriteCollectionViewCell.swift in Sources */,
 				6FA0691B29B75A40004EC605 /* PairListData.swift in Sources */,
+				6FC8DB4629DEA21100278166 /* PairListAlamofire.swift in Sources */,
+				6FB0556629DD67910009E540 /* ChartDateFormatter.swift in Sources */,
 				6F72505829B6060800EE2ED4 /* AppDelegate.swift in Sources */,
 				6F55FB9B29B9C0D000382D21 /* PairChartViewController.swift in Sources */,
 				6F72505A29B6060800EE2ED4 /* SceneDelegate.swift in Sources */,
-				6F039F6029C361C700F19593 /* PairListFavoriteTableViewCell.swift in Sources */,
 				6F219B3229B9D45B00FB7849 /* PairChartAPI.swift in Sources */,
 				6FA76BD229B8CE9E00BFA096 /* UiColor.swift in Sources */,
 				6F88E0C329BB664900DB50B2 /* PairChartData.swift in Sources */,
@@ -540,6 +576,14 @@
 				kind = branch;
 			};
 		};
+		6FC8DB3D29DEA00900278166 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		6FD37B1E29D1D3EC001E9D77 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
@@ -560,6 +604,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6F219B2E29B9CB9B00FB7849 /* XCRemoteSwiftPackageReference "TinyConstraints" */;
 			productName = TinyConstraints;
+		};
+		6FC8DB3E29DEA00900278166 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6FC8DB3D29DEA00900278166 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

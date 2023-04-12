@@ -9,7 +9,7 @@ import Foundation
 
 struct PairListAPI {
     
-    func getCryptoData(url: URL, completion: @escaping (PairListData?) -> ()) {
+    func getPairListData(url: URL, completion: @escaping (PairListData?) -> ()) {
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             

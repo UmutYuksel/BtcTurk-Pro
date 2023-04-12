@@ -26,7 +26,7 @@ class PairChartViewModel {
     
     func getChartsData(with urlString: String) {
         
-        PairChartAPI().getChartData(url: URL(string: urlString)!) { chartsData in
+        PairChartAPI().getPairChartData(url: URL(string: urlString)!) { chartsData in
             
             if let chartsData = chartsData {
                 self.chartsDataList = chartsData
@@ -42,10 +42,10 @@ class PairChartViewModel {
     func mapToChartModel() -> [ChartDataEntry] {
         var chartDataArray = [ChartDataEntry]()
         
-        for (i,_) in (chartsDataList?.t ?? []).enumerated() {
-            let xValues = chartsDataList!.t![i]
-            if (chartsDataList?.c?.count ?? 0) > i {
-                let yValues = chartsDataList!.c![i]
+        for (i,_) in (chartsDataList?.time ?? []).enumerated() {
+            let xValues = chartsDataList!.time![i]
+            if (chartsDataList?.close?.count ?? 0) > i {
+                let yValues = chartsDataList!.close![i]
                 let chartData = ChartDataEntry(x: xValues, y: yValues)
                 chartDataArray.append(chartData)
             } else {
