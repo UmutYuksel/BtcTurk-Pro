@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F07322129EEB4A9005C4E41 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 6F07322029EEB4A9005C4E41 /* Toast */; };
+		6F07322329EEE0AD005C4E41 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F07322229EEE0AD005C4E41 /* APIManager.swift */; };
 		6F1F376F29D3215E00AC51FD /* PairListPresitionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1F376E29D3215E00AC51FD /* PairListPresitionModel.swift */; };
 		6F1F377129D3224200AC51FD /* PairListFavoritePresitionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1F377029D3224200AC51FD /* PairListFavoritePresitionModel.swift */; };
 		6F219B2D29B9CB7B00FB7849 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 6F219B2C29B9CB7B00FB7849 /* Charts */; };
-		6F219B3029B9CB9B00FB7849 /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 6F219B2F29B9CB9B00FB7849 /* TinyConstraints */; };
 		6F219B3229B9D45B00FB7849 /* PairChartAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F219B3129B9D45B00FB7849 /* PairChartAPI.swift */; };
 		6F3B7AA729C45FFC003E97D2 /* PairListFavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B7AA629C45FFC003E97D2 /* PairListFavoriteCollectionViewCell.swift */; };
 		6F53C75229B61DA00001FE21 /* PairListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F53C75129B61DA00001FE21 /* PairListViewModel.swift */; };
@@ -22,18 +23,17 @@
 		6F72506129B6060900EE2ED4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F72506029B6060900EE2ED4 /* Assets.xcassets */; };
 		6F72506429B6060900EE2ED4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F72506229B6060900EE2ED4 /* LaunchScreen.storyboard */; };
 		6F72506C29B60FE600EE2ED4 /* PairListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F72506B29B60FE600EE2ED4 /* PairListTableViewCell.swift */; };
-		6F88E0C329BB664900DB50B2 /* PairChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88E0C229BB664900DB50B2 /* PairChartData.swift */; };
-		6FA0691929B7519B004EC605 /* PairListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0691829B7519B004EC605 /* PairListAPI.swift */; };
-		6FA0691B29B75A40004EC605 /* PairListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0691A29B75A40004EC605 /* PairListData.swift */; };
+		6F88E0C329BB664900DB50B2 /* PairChartResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88E0C229BB664900DB50B2 /* PairChartResponse.swift */; };
+		6FA0691929B7519B004EC605 /* PairListAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0691829B7519B004EC605 /* PairListAPIManager.swift */; };
+		6FA0691B29B75A40004EC605 /* PairListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0691A29B75A40004EC605 /* PairListResponse.swift */; };
 		6FA76BD229B8CE9E00BFA096 /* UiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA76BD129B8CE9E00BFA096 /* UiColor.swift */; };
 		6FA9DE6929BB6B85007F86B7 /* PairChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA9DE6829BB6B85007F86B7 /* PairChartViewModel.swift */; };
 		6FB0556629DD67910009E540 /* ChartDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB0556529DD67910009E540 /* ChartDateFormatter.swift */; };
 		6FC8DB3F29DEA00900278166 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6FC8DB3E29DEA00900278166 /* Alamofire */; };
-		6FC8DB4429DEA1A700278166 /* PairListApiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC8DB4329DEA1A700278166 /* PairListApiData.swift */; };
-		6FC8DB4629DEA21100278166 /* PairListAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC8DB4529DEA21100278166 /* PairListAlamofire.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F07322229EEE0AD005C4E41 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		6F1F376E29D3215E00AC51FD /* PairListPresitionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListPresitionModel.swift; sourceTree = "<group>"; };
 		6F1F377029D3224200AC51FD /* PairListFavoritePresitionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListFavoritePresitionModel.swift; sourceTree = "<group>"; };
 		6F219B3129B9D45B00FB7849 /* PairChartAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairChartAPI.swift; sourceTree = "<group>"; };
@@ -49,14 +49,12 @@
 		6F72506329B6060900EE2ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F72506529B6060900EE2ED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F72506B29B60FE600EE2ED4 /* PairListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListTableViewCell.swift; sourceTree = "<group>"; };
-		6F88E0C229BB664900DB50B2 /* PairChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairChartData.swift; sourceTree = "<group>"; };
-		6FA0691829B7519B004EC605 /* PairListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListAPI.swift; sourceTree = "<group>"; };
-		6FA0691A29B75A40004EC605 /* PairListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListData.swift; sourceTree = "<group>"; };
+		6F88E0C229BB664900DB50B2 /* PairChartResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairChartResponse.swift; sourceTree = "<group>"; };
+		6FA0691829B7519B004EC605 /* PairListAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListAPIManager.swift; sourceTree = "<group>"; };
+		6FA0691A29B75A40004EC605 /* PairListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListResponse.swift; sourceTree = "<group>"; };
 		6FA76BD129B8CE9E00BFA096 /* UiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiColor.swift; sourceTree = "<group>"; };
 		6FA9DE6829BB6B85007F86B7 /* PairChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairChartViewModel.swift; sourceTree = "<group>"; };
 		6FB0556529DD67910009E540 /* ChartDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDateFormatter.swift; sourceTree = "<group>"; };
-		6FC8DB4329DEA1A700278166 /* PairListApiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListApiData.swift; sourceTree = "<group>"; };
-		6FC8DB4529DEA21100278166 /* PairListAlamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListAlamofire.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +62,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F07322129EEB4A9005C4E41 /* Toast in Frameworks */,
 				6FC8DB3F29DEA00900278166 /* Alamofire in Frameworks */,
 				6F219B2D29B9CB7B00FB7849 /* Charts in Frameworks */,
-				6F219B3029B9CB9B00FB7849 /* TinyConstraints in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +106,6 @@
 		6F72507229B614FF00EE2ED4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				6FC8DB4129DEA03B00278166 /* Alamofire */,
 				6FC8DB4029DEA02100278166 /* URLSession */,
 			);
 			path = Service;
@@ -166,25 +163,9 @@
 			children = (
 				6FC9741829D5B12900C1242F /* PairList */,
 				6FC9741929D5B13700C1242F /* PairChart */,
+				6F07322229EEE0AD005C4E41 /* APIManager.swift */,
 			);
 			path = URLSession;
-			sourceTree = "<group>";
-		};
-		6FC8DB4129DEA03B00278166 /* Alamofire */ = {
-			isa = PBXGroup;
-			children = (
-				6FC8DB4229DEA19400278166 /* PairList */,
-			);
-			path = Alamofire;
-			sourceTree = "<group>";
-		};
-		6FC8DB4229DEA19400278166 /* PairList */ = {
-			isa = PBXGroup;
-			children = (
-				6FC8DB4329DEA1A700278166 /* PairListApiData.swift */,
-				6FC8DB4529DEA21100278166 /* PairListAlamofire.swift */,
-			);
-			path = PairList;
 			sourceTree = "<group>";
 		};
 		6FC9741529D5A9F300C1242F /* Cell */ = {
@@ -199,8 +180,8 @@
 		6FC9741829D5B12900C1242F /* PairList */ = {
 			isa = PBXGroup;
 			children = (
-				6FA0691829B7519B004EC605 /* PairListAPI.swift */,
-				6FA0691A29B75A40004EC605 /* PairListData.swift */,
+				6FA0691829B7519B004EC605 /* PairListAPIManager.swift */,
+				6FA0691A29B75A40004EC605 /* PairListResponse.swift */,
 			);
 			path = PairList;
 			sourceTree = "<group>";
@@ -209,7 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				6F219B3129B9D45B00FB7849 /* PairChartAPI.swift */,
-				6F88E0C229BB664900DB50B2 /* PairChartData.swift */,
+				6F88E0C229BB664900DB50B2 /* PairChartResponse.swift */,
 			);
 			path = PairChart;
 			sourceTree = "<group>";
@@ -248,8 +229,8 @@
 			name = "Proje-Test";
 			packageProductDependencies = (
 				6F219B2C29B9CB7B00FB7849 /* Charts */,
-				6F219B2F29B9CB9B00FB7849 /* TinyConstraints */,
 				6FC8DB3E29DEA00900278166 /* Alamofire */,
+				6F07322029EEB4A9005C4E41 /* Toast */,
 			);
 			productName = "BtcTurk Case";
 			productReference = 6F72505429B6060800EE2ED4 /* Proje-Test.app */;
@@ -282,9 +263,8 @@
 			mainGroup = 6F72504B29B6060800EE2ED4;
 			packageReferences = (
 				6F219B2B29B9CB7B00FB7849 /* XCRemoteSwiftPackageReference "Charts" */,
-				6F219B2E29B9CB9B00FB7849 /* XCRemoteSwiftPackageReference "TinyConstraints" */,
-				6FD37B1E29D1D3EC001E9D77 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 				6FC8DB3D29DEA00900278166 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				6F07321F29EEB4A9005C4E41 /* XCRemoteSwiftPackageReference "toast-swift" */,
 			);
 			productRefGroup = 6F72505529B6060800EE2ED4 /* Products */;
 			projectDirPath = "";
@@ -313,23 +293,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FA0691929B7519B004EC605 /* PairListAPI.swift in Sources */,
+				6FA0691929B7519B004EC605 /* PairListAPIManager.swift in Sources */,
 				6F1F377129D3224200AC51FD /* PairListFavoritePresitionModel.swift in Sources */,
 				6F72505C29B6060800EE2ED4 /* PairListViewController.swift in Sources */,
 				6F72506C29B60FE600EE2ED4 /* PairListTableViewCell.swift in Sources */,
 				6F1F376F29D3215E00AC51FD /* PairListPresitionModel.swift in Sources */,
 				6F53C75229B61DA00001FE21 /* PairListViewModel.swift in Sources */,
-				6FC8DB4429DEA1A700278166 /* PairListApiData.swift in Sources */,
 				6F3B7AA729C45FFC003E97D2 /* PairListFavoriteCollectionViewCell.swift in Sources */,
-				6FA0691B29B75A40004EC605 /* PairListData.swift in Sources */,
-				6FC8DB4629DEA21100278166 /* PairListAlamofire.swift in Sources */,
+				6FA0691B29B75A40004EC605 /* PairListResponse.swift in Sources */,
 				6FB0556629DD67910009E540 /* ChartDateFormatter.swift in Sources */,
 				6F72505829B6060800EE2ED4 /* AppDelegate.swift in Sources */,
 				6F55FB9B29B9C0D000382D21 /* PairChartViewController.swift in Sources */,
 				6F72505A29B6060800EE2ED4 /* SceneDelegate.swift in Sources */,
+				6F07322329EEE0AD005C4E41 /* APIManager.swift in Sources */,
 				6F219B3229B9D45B00FB7849 /* PairChartAPI.swift in Sources */,
 				6FA76BD229B8CE9E00BFA096 /* UiColor.swift in Sources */,
-				6F88E0C329BB664900DB50B2 /* PairChartData.swift in Sources */,
+				6F88E0C329BB664900DB50B2 /* PairChartResponse.swift in Sources */,
 				6FA9DE6929BB6B85007F86B7 /* PairChartViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -552,17 +531,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6F07321F29EEB4A9005C4E41 /* XCRemoteSwiftPackageReference "toast-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BastiaanJansen/toast-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		6F219B2B29B9CB7B00FB7849 /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		6F219B2E29B9CB9B00FB7849 /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/roberthein/TinyConstraints";
 			requirement = {
 				branch = master;
 				kind = branch;
@@ -576,26 +555,18 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		6FD37B1E29D1D3EC001E9D77 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.2;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6F07322029EEB4A9005C4E41 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6F07321F29EEB4A9005C4E41 /* XCRemoteSwiftPackageReference "toast-swift" */;
+			productName = Toast;
+		};
 		6F219B2C29B9CB7B00FB7849 /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6F219B2B29B9CB7B00FB7849 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
-		};
-		6F219B2F29B9CB9B00FB7849 /* TinyConstraints */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6F219B2E29B9CB9B00FB7849 /* XCRemoteSwiftPackageReference "TinyConstraints" */;
-			productName = TinyConstraints;
 		};
 		6FC8DB3E29DEA00900278166 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

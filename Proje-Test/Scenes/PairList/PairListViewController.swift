@@ -7,6 +7,10 @@
 
 import UIKit
 
+struct ChartListViewControllerPassData {
+//    var selectedPair = 
+}
+
 class PairListViewController: UIViewController {
     //Mark for: Variables
     @IBOutlet weak var favoriteLabel: UILabel!
@@ -16,6 +20,14 @@ class PairListViewController: UIViewController {
     var viewModel = PairListViewModel()
     
     //Mark for: Functions
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        registerViews()
+        bindViewModel()
+        adjustSegmentedControl()
+        getApiResult()
+    }
+    
     fileprivate func registerViews() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -24,13 +36,13 @@ class PairListViewController: UIViewController {
         tableView.sectionHeaderTopPadding = 0
     }
     //Mark for: SegmentedControl adjust func
-    fileprivate func adjustSegmentedControl() {
+    private func adjustSegmentedControl() {
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
         segmentControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: "selectedSegmentIndex")
     }
     //Mark for: Get data's from api and UserDefaults
-    fileprivate func getApiResult() {
+    private func getApiResult() {
         viewModel.getFavoritesFromUserDefaults()
         viewModel.getPairList()
     }
@@ -42,8 +54,9 @@ class PairListViewController: UIViewController {
         collectionView.reloadData()
     }
     
-    fileprivate func  bindViewModel() {
-        viewModel.dataUpdatedCallback = {
+    private func  bindViewModel() {
+        viewModel.dataUpdatedCallback = { [weak self] in
+            guard let self = self else { return }
             self.tableView.reloadData()
             self.collectionView.reloadData()
             if self.viewModel.pushFavorites().count == 0 {
@@ -84,13 +97,6 @@ class PairListViewController: UIViewController {
         view.addSubview(lblPairs)
         lblPairs.text = "Pairs"
         return view
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        registerViews()
-        bindViewModel()
-        adjustSegmentedControl()
-        getApiResult()
     }
 }
 

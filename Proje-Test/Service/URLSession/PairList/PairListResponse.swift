@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct PairListData : Codable {
-    let data : [PairListDataArray]
+struct PairListResponse : Decodable {
+    let data : [PairListResponseElement]
 }
 
-struct PairListDataArray : Codable {
+struct PairListResponseElement : Decodable {
     let pair : String
     let last : Decimal
     let dailyPercent : Float

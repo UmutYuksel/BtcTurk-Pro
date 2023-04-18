@@ -17,7 +17,7 @@ struct PairListFavoritePresitionModel {
     var denominatorSymbol : String
     var pairName : String
    
-    init(model : PairListDataArray,favoriteList : [String]){
+    init(model : PairListResponseElement,favoriteList : [String]){
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 10

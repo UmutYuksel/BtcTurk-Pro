@@ -8,7 +8,7 @@
 import Foundation
 import Charts
 import UIKit
-import TinyConstraints
+
 
 class PairChartViewController : UIViewController {
     //Mark for: Variables
@@ -57,7 +57,7 @@ class PairChartViewController : UIViewController {
     }
     //Mark for: viewDidLoad get data from api func
     func getChartDataFromAPI() {
-        viewModel.getChartDataTime(from: String(Int(viewModel.unixTimeStamp - 432000)), to: String(viewModel.unixTimeStamp), chartPairName: viewModel.selectedPair!)
+        viewModel.segmentControlValueChange(selectedSegmentIndex: viewModel.selectedSegmentIndex, selectedPairName: viewModel.selectedPair ?? "")
     }
    
     func bindViewModel() {
@@ -87,16 +87,7 @@ extension PairChartViewController : ChartViewDelegate {
     
     //Mark for: User tap to chart return func
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        
-        let xValue = entry.x
-        let yValue = entry.y
-        let timestamp = Int(xValue)
-        let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy mm:HH"
-        let dateString = formatter.string(from: date)
-        let labelString = "\(dateString) Tarihindeki \(viewModel.selectedNumerator ?? "")/\(viewModel.selectedDenominator ?? "") Değeri = \(yValue)"
-        closeLabel.text = labelString
+        closeLabel.text = viewModel.chartValueSelected(entry: entry)
     }
     //Mark for: Set to chart data func
     func setGraphData(with Entities: [ChartDataEntry]) {

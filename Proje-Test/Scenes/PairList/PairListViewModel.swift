@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Toast
 
 //struct PairListSection {
 //    let title = String
@@ -19,8 +20,8 @@ import UIKit
 class PairListViewModel {
     //Mark for: Variables
     var pairFavoriteList = [String]()
-    var pairList = [PairListDataArray]()
-    var filteredPairList = [PairListDataArray]()
+    var pairList = [PairListResponseElement]()
+    var filteredPairList = [PairListResponseElement]()
     var dataUpdatedCallback : (()->())?
     var selectedPair : String?
     var numeratorSymbol : String?
@@ -48,16 +49,25 @@ class PairListViewModel {
             print("URL Hatalı")
             return
         }
-        PairListAPI().getPairListData(url: apiURL) { cryptoData in
-            if let cryptoData = cryptoData {
-                self.pairList = cryptoData.data
+        PairListAPIManager().getPairList(url: apiURL) { pairListResponse in
+            if let pairList = pairListResponse {
+                self.pairList = pairList.data
                 let denominatorName = UserDefaults.standard.string(forKey: "selectedDenominatorName")
                 self.filterPairList(denominatorName: denominatorName ?? DenominatorName.TRY.rawValue)
                 DispatchQueue.main.async {
                     self.dataUpdatedCallback?()
                 }
             } else {
-                print("Hata")
+                DispatchQueue.main.async {
+                    let configToast = ToastConfiguration(
+                        direction: .bottom,
+                        autoHide: true,
+                        displayTime: 2,
+                        animationTime: 0.2
+                    )
+                    let toast = Toast.text("Grafik Verileri Getirilirken Hata Oluştu",config: configToast)
+                    toast.show()
+                }
             }
         }
     }
@@ -106,7 +116,7 @@ class PairListViewModel {
         case BTC = "BTC"
         case ALL = "ALL"
     }
-
+    
     func segmentControlValueChange(selectedSegmentIndex: Int) {
         var denominatorName: DenominatorName
         
@@ -126,25 +136,8 @@ class PairListViewModel {
         UserDefaults.standard.set(selectedSegmentIndex, forKey: "selectedSegmentIndex")
         UserDefaults.standard.set(denominatorName.rawValue, forKey: "selectedDenominatorName")
     }
-    
-    
-//    func segmentControlValueChange(selectedSegmentIndex : Int) {
-//        if selectedSegmentIndex == 0 {
-//            filterPairList(denominatorName: "TRY")
-//            UserDefaults.standard.set(selectedSegmentIndex, forKey: "selectedSegmentIndex")
-//            UserDefaults.standard.set("TRY", forKey: "selectedDenominatorName")
-//        } else if selectedSegmentIndex == 1 {
-//            filterPairList(denominatorName: "USDT")
-//            UserDefaults.standard.set(selectedSegmentIndex, forKey: "selectedSegmentIndex")
-//            UserDefaults.standard.set("USDT", forKey: "selectedDenominatorName")
-//        } else if selectedSegmentIndex == 2 {
-//            filterPairList(denominatorName: "BTC")
-//            UserDefaults.standard.set(selectedSegmentIndex, forKey: "selectedSegmentIndex")
-//            UserDefaults.standard.set("BTC", forKey: "selectedDenominatorName")
-//        } else if selectedSegmentIndex == 3 {
-//            filterPairList(denominatorName: "ALL")
-//            UserDefaults.standard.set(selectedSegmentIndex, forKey: "selectedSegmentIndex")
-//            UserDefaults.standard.set("ALL", forKey: "selectedDenominatorName")
-//        }
-//    }
 }
+    
+    
+    
+

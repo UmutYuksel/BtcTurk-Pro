@@ -7,16 +7,19 @@
 
 import Foundation
 import Charts
+import Toast
+import UIKit
 
 class PairChartViewModel {
     //Mark for: Variables
-    var chartsDataList : PairChartData?
+    var chartsResponse : PairChartResponse?
     var dataUpdatedCallBack : (([ChartDataEntry])->())?
     let apiWithTime = "https://graph-api.btcturk.com/v1/klines/history?from="
     var selectedPair : String?
     var selectedNumerator : String?
     var selectedDenominator : String?
     let unixTimeStamp : Int = Int(Date().timeIntervalSince1970)
+    var selectedSegmentIndex = 4
     
     //Mark for: Functions
     
@@ -25,18 +28,40 @@ class PairChartViewModel {
         let apiURLWithTime = "\(apiWithTime)\(from)&resolution=60&to=\(to)&symbol=\(chartPairName)"
         getChartsData(with: apiURLWithTime)
     }
+    
+    //Mark for: Chart value selected return chart values func
+    func chartValueSelected(entry: ChartDataEntry) -> String {
+        let xValue = entry.x
+        let yValue = entry.y
+        let timestamp = Int(xValue)
+        let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy mm:HH"
+        let dateString = formatter.string(from: date)
+        let labelString = "\(dateString) Tarihindeki \(selectedNumerator ?? "")/\(selectedDenominator ?? "") Değeri = \(yValue)"
+        return labelString
+    }
+    
     //Mark for: Function that pulls graphics data through the api
     func getChartsData(with urlString: String) {
-        
-        PairChartAPI().getPairChartData(url: URL(string: urlString)!) { chartsData in
+        PairChartAPIManager().getPairChart(url: URL(string: urlString)!) { pairChartResponse in
             
-            if let chartsData = chartsData {
-                self.chartsDataList = chartsData
+            if let pairChartList = pairChartResponse {
+                self.chartsResponse = pairChartList
                 DispatchQueue.main.async {
                     self.dataUpdatedCallBack?(self.mapToChartModel())
                 }
             } else {
-                print("Hata")
+                DispatchQueue.main.async {
+                    let configToast = ToastConfiguration(
+                        direction: .bottom,
+                        autoHide: true,
+                        displayTime: 2,
+                        animationTime: 0.2
+                    )
+                    let toast = Toast.text("Grafik Verileri Getirilirken Hata Oluştu",config: configToast)
+                    toast.show()
+                }
             }
         }
     }
@@ -44,10 +69,10 @@ class PairChartViewModel {
     func mapToChartModel() -> [ChartDataEntry] {
         var chartDataArray = [ChartDataEntry]()
         
-        for (i,_) in (chartsDataList?.time ?? []).enumerated() {
-            let xValues = chartsDataList!.time![i]
-            if (chartsDataList?.close?.count ?? 0) > i {
-                let yValues = chartsDataList!.close![i]
+        for (i,_) in (chartsResponse?.time ?? []).enumerated() {
+            let xValues = chartsResponse!.time![i]
+            if (chartsResponse?.close?.count ?? 0) > i {
+                let yValues = chartsResponse!.close![i]
                 let chartData = ChartDataEntry(x: xValues, y: yValues)
                 chartDataArray.append(chartData)
             } else {
@@ -79,18 +104,53 @@ class PairChartViewModel {
     
     //Mark for: The function where the parameters of the getChartDataTime function are set
     func getChartDataWithTime(for selectedPairName: String, to timeRange: ChartTimeRange) {
-        let fromTimeStamp = unixTimeStamp - Int(timeRange.rawValue)
+        let fromTimeStamp = unixTimeStamp - Int(timeRange.days * 86400)
         let fromTimeStampString = String(fromTimeStamp)
         let toTimeStampString = String(unixTimeStamp)
         getChartDataTime(from: fromTimeStampString, to: toTimeStampString, chartPairName: selectedPairName)
     }
     
-    enum ChartTimeRange: TimeInterval {
-        case oneYear = 31556926
-        case sixMonths = 15778458
-        case threeMonths = 7889229
-        case oneMonth = 2629743
-        case fiveDays = 432000
-        case oneDay = 86400
+    enum ChartTimeRange {
+        case oneYear
+        case sixMonths
+        case threeMonths
+        case oneMonth
+        case fiveDays
+        case oneDay
+        case custom(Int)
+        
+        var days: Int {
+            switch self {
+            case .oneDay:
+                return 1
+            case .fiveDays:
+                return 5
+            case .oneMonth:
+                return 30
+            case .threeMonths:
+                return 90
+            case .sixMonths:
+                return 180
+            case .oneYear:
+                return 365
+            case .custom(let day):
+                return day
+            }
+        }
+        
+        var displayingText: String {
+            switch self {
+            case .oneMonth:
+                return "1 Ay"
+            case .threeMonths:
+                return "3 Ay"
+            case .sixMonths:
+                return "6 Ay"
+            case .oneYear:
+                return "1 Yıl"
+            default:
+                return "\(self.days) Gün"
+            }
+        }
     }
 }

@@ -7,23 +7,11 @@
 
 import Foundation
 
-struct PairChartAPI {
-    
-    func getPairChartData(url: URL, completion: @escaping (PairChartData?) -> ()) {
-        
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            
-            if let error = error {
-                print(error.localizedDescription)
-                completion(nil)
-            } else if let data = data {
-                let cryptoChartData = try? JSONDecoder().decode(PairChartData.self, from: data)
-                    completion(cryptoChartData)
-                    
-            } else {
-                print(error!.localizedDescription)
-                completion(nil)
-            }
-        }.resume()
+//Mark for: Get PairList scene data from API and push data PairListData
+struct PairChartAPIManager {
+    let apiManager = APIManager<PairChartResponse>()
+
+    func getPairChart(url: URL, completion: @escaping (PairChartResponse?) -> ()) {
+        apiManager.get(url: url, completion: completion)
     }
 }
