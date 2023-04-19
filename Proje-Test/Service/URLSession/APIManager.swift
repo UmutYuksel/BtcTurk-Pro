@@ -19,7 +19,7 @@ struct APIManager<T: Decodable> {
                         direction: .bottom,
                         autoHide: true,
                         displayTime: 2,
-                        animationTime: 0.2
+                        animationTime: 0.3
                     )
                     let toast = Toast.text("\(error.localizedDescription)",config: configToast)
                     toast.show()
