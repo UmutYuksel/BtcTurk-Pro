@@ -20,6 +20,8 @@ class PairChartViewModel {
     var selectedDenominator : String?
     let unixTimeStamp : Int = Int(Date().timeIntervalSince1970)
     var selectedSegmentIndex = 4
+    var PairListGetData : ChartListViewControllerPassData!
+    
     
     //Mark for: Functions
     
@@ -109,7 +111,7 @@ class PairChartViewModel {
         let toTimeStampString = String(unixTimeStamp)
         getChartDataTime(from: fromTimeStampString, to: toTimeStampString, chartPairName: selectedPairName)
     }
-    
+    //Mark for: The enum that sets the selectedSegment return values ​​on the PairChart screen
     enum ChartTimeRange {
         case oneYear
         case sixMonths

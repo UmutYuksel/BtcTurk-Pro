@@ -22,8 +22,16 @@ class PairChartViewController : UIViewController {
     
     //Mark for: Functions
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        bindViewModel()
+        getChartDataFromAPI()
+        editChartView()
+        setTitle()
+    }
+    
     //Mark for: LineChartView adjustment func
-    func editChartView() {
+    private func editChartView() {
         lineChartView.backgroundColor = UIColor.chartBackground()
         lineChartView.chartDescription.enabled = false
         lineChartView.animate(xAxisDuration: 1.0)
@@ -52,15 +60,15 @@ class PairChartViewController : UIViewController {
         lineChartView.delegate = self
     }
     //Mark for: set view Title
-    func setTitle() {
-        titleLabel.title = "\(viewModel.selectedNumerator ?? "")/\(viewModel.selectedDenominator ?? "")"
+    private func setTitle() {
+        titleLabel.title = "\(viewModel.PairListGetData.numeratorSymbol ?? "")/\(viewModel.PairListGetData.denominatorSymbol ?? "")"
     }
     //Mark for: viewDidLoad get data from api func
-    func getChartDataFromAPI() {
-        viewModel.segmentControlValueChange(selectedSegmentIndex: viewModel.selectedSegmentIndex, selectedPairName: viewModel.selectedPair ?? "")
+    private func getChartDataFromAPI() {
+        viewModel.segmentControlValueChange(selectedSegmentIndex: viewModel.selectedSegmentIndex, selectedPairName: viewModel.PairListGetData.selectedPair ?? "")
     }
    
-    func bindViewModel() {
+    private func bindViewModel() {
         viewModel.dataUpdatedCallBack = { items in
             self.setGraphData(with: items)
             self.editChartView()
@@ -70,15 +78,7 @@ class PairChartViewController : UIViewController {
     //Mark for: SegmentedControl change segment action
     @IBAction func segmentedControlValueChange(_ sender: UISegmentedControl) {
         let selectedSegmentIndex = sender.selectedSegmentIndex
-        viewModel.segmentControlValueChange(selectedSegmentIndex: selectedSegmentIndex,selectedPairName: viewModel.selectedPair!)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        bindViewModel()
-        getChartDataFromAPI()
-        editChartView()
-        setTitle()
+        viewModel.segmentControlValueChange(selectedSegmentIndex: selectedSegmentIndex,selectedPairName: viewModel.PairListGetData.selectedPair!)
     }
 }
 
@@ -90,7 +90,7 @@ extension PairChartViewController : ChartViewDelegate {
         closeLabel.text = viewModel.chartValueSelected(entry: entry)
     }
     //Mark for: Set to chart data func
-    func setGraphData(with Entities: [ChartDataEntry]) {
+    private func setGraphData(with Entities: [ChartDataEntry]) {
         let set1 = LineChartDataSet(entries: Entities, label: "Data")
         set1.mode = .linear
         set1.lineWidth = 3

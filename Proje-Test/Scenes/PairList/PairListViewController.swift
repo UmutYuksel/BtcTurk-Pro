@@ -8,7 +8,9 @@
 import UIKit
 
 struct ChartListViewControllerPassData {
-//    var selectedPair = 
+    var selectedPair : String?
+    var numeratorSymbol : String?
+    var denominatorSymbol : String?
 }
 
 class PairListViewController: UIViewController {
@@ -28,7 +30,7 @@ class PairListViewController: UIViewController {
         getApiResult()
     }
     
-    fileprivate func registerViews() {
+    private func registerViews() {
         tableView.delegate = self
         tableView.dataSource = self
         collectionView.delegate = self
@@ -71,20 +73,20 @@ class PairListViewController: UIViewController {
     
     //Mark for: Tableview selected cell adjustment
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.selectedPair = viewModel.filteredPairList[indexPath.row].pair
-        viewModel.numeratorSymbol = viewModel.filteredPairList[indexPath.row].numeratorSymbol
-        viewModel.denominatorSymbol = viewModel.filteredPairList[indexPath.row].denominatorSymbol
-        performSegue(withIdentifier: "pairCharts", sender: self)
+        let selectedPair = viewModel.filteredPairList[indexPath.row].pair
+        let numeratorSymbol = viewModel.filteredPairList[indexPath.row].numeratorSymbol
+        let denominatorSymbol = viewModel.filteredPairList[indexPath.row].denominatorSymbol
+        let PairListPassData = ChartListViewControllerPassData(selectedPair: selectedPair,numeratorSymbol: numeratorSymbol,denominatorSymbol: denominatorSymbol)
+        performSegue(withIdentifier: "pairCharts", sender: PairListPassData)
     }
     //Mark for: Segue adjustment
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "pairCharts" {
-            if let destinationVC = segue.destination as? PairChartViewController {
-                destinationVC.viewModel.selectedPair = viewModel.selectedPair
-                destinationVC.viewModel.selectedNumerator = viewModel.numeratorSymbol
-                destinationVC.viewModel.selectedDenominator = viewModel.denominatorSymbol
-            }
+            
+            let PairListPassData = sender as! ChartListViewControllerPassData
+            let destinationVC = segue.destination as! PairChartViewController
+            destinationVC.viewModel.PairListGetData = PairListPassData
         }
     }
     //Mark for: Tableview header adjustment
@@ -132,9 +134,10 @@ extension PairListViewController : UICollectionViewDelegate, UICollectionViewDat
     }
     //Mark for: CollectionView selected cell adjustment
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.selectedPair = viewModel.pushFavorites()[indexPath.row].pair
-        viewModel.numeratorSymbol = viewModel.pushFavorites()[indexPath.row].numeratorSymbol
-        viewModel.denominatorSymbol = viewModel.pushFavorites()[indexPath.row].denominatorSymbol
-        performSegue(withIdentifier: "pairCharts", sender: self)
+        let selectedPair = viewModel.pushFavorites()[indexPath.row].pair
+        let numeratorSymbol = viewModel.pushFavorites()[indexPath.row].numeratorSymbol
+        let denominatorSymbol = viewModel.pushFavorites()[indexPath.row].denominatorSymbol
+        let PairListPassData = ChartListViewControllerPassData(selectedPair: selectedPair,numeratorSymbol: numeratorSymbol,denominatorSymbol: denominatorSymbol)
+        performSegue(withIdentifier: "pairCharts", sender: PairListPassData)
     }
 }

@@ -12,7 +12,7 @@
 		6F1F376F29D3215E00AC51FD /* PairListPresitionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1F376E29D3215E00AC51FD /* PairListPresitionModel.swift */; };
 		6F1F377129D3224200AC51FD /* PairListFavoritePresitionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1F377029D3224200AC51FD /* PairListFavoritePresitionModel.swift */; };
 		6F219B2D29B9CB7B00FB7849 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 6F219B2C29B9CB7B00FB7849 /* Charts */; };
-		6F219B3229B9D45B00FB7849 /* PairChartAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F219B3129B9D45B00FB7849 /* PairChartAPI.swift */; };
+		6F219B3229B9D45B00FB7849 /* PairChartAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F219B3129B9D45B00FB7849 /* PairChartAPIManager.swift */; };
 		6F3B7AA729C45FFC003E97D2 /* PairListFavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B7AA629C45FFC003E97D2 /* PairListFavoriteCollectionViewCell.swift */; };
 		6F53C75229B61DA00001FE21 /* PairListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F53C75129B61DA00001FE21 /* PairListViewModel.swift */; };
 		6F55FB9B29B9C0D000382D21 /* PairChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F55FB9A29B9C0D000382D21 /* PairChartViewController.swift */; };
@@ -36,7 +36,7 @@
 		6F07322229EEE0AD005C4E41 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		6F1F376E29D3215E00AC51FD /* PairListPresitionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListPresitionModel.swift; sourceTree = "<group>"; };
 		6F1F377029D3224200AC51FD /* PairListFavoritePresitionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListFavoritePresitionModel.swift; sourceTree = "<group>"; };
-		6F219B3129B9D45B00FB7849 /* PairChartAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairChartAPI.swift; sourceTree = "<group>"; };
+		6F219B3129B9D45B00FB7849 /* PairChartAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairChartAPIManager.swift; sourceTree = "<group>"; };
 		6F3B7AA629C45FFC003E97D2 /* PairListFavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListFavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F53C75129B61DA00001FE21 /* PairListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListViewModel.swift; sourceTree = "<group>"; };
 		6F55FB9A29B9C0D000382D21 /* PairChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairChartViewController.swift; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 		6FC9741929D5B13700C1242F /* PairChart */ = {
 			isa = PBXGroup;
 			children = (
-				6F219B3129B9D45B00FB7849 /* PairChartAPI.swift */,
+				6F219B3129B9D45B00FB7849 /* PairChartAPIManager.swift */,
 				6F88E0C229BB664900DB50B2 /* PairChartResponse.swift */,
 			);
 			path = PairChart;
@@ -306,7 +306,7 @@
 				6F55FB9B29B9C0D000382D21 /* PairChartViewController.swift in Sources */,
 				6F72505A29B6060800EE2ED4 /* SceneDelegate.swift in Sources */,
 				6F07322329EEE0AD005C4E41 /* APIManager.swift in Sources */,
-				6F219B3229B9D45B00FB7849 /* PairChartAPI.swift in Sources */,
+				6F219B3229B9D45B00FB7849 /* PairChartAPIManager.swift in Sources */,
 				6FA76BD229B8CE9E00BFA096 /* UiColor.swift in Sources */,
 				6F88E0C329BB664900DB50B2 /* PairChartResponse.swift in Sources */,
 				6FA9DE6929BB6B85007F86B7 /* PairChartViewModel.swift in Sources */,

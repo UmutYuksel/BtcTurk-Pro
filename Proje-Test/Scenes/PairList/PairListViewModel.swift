@@ -9,24 +9,12 @@ import Foundation
 import UIKit
 import Toast
 
-//struct PairListSection {
-//    let title = String
-//    let cellType = String
-//    let cellHeight
-//}
-
-
-
 class PairListViewModel {
     //Mark for: Variables
     var pairFavoriteList = [String]()
     var pairList = [PairListResponseElement]()
     var filteredPairList = [PairListResponseElement]()
     var dataUpdatedCallback : (()->())?
-    var selectedPair : String?
-    var numeratorSymbol : String?
-    var denominatorSymbol : String?
-    
     
     //Mark for: Functions
     
