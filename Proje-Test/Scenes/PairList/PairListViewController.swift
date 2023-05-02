@@ -73,11 +73,7 @@ class PairListViewController: UIViewController {
     
     //Mark for: Tableview selected cell adjustment
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedPair = viewModel.filteredPairList[indexPath.row].pair
-        let numeratorSymbol = viewModel.filteredPairList[indexPath.row].numeratorSymbol
-        let denominatorSymbol = viewModel.filteredPairList[indexPath.row].denominatorSymbol
-        let PairListPassData = ChartListViewControllerPassData(selectedPair: selectedPair,numeratorSymbol: numeratorSymbol,denominatorSymbol: denominatorSymbol)
-        performSegue(withIdentifier: "pairCharts", sender: PairListPassData)
+        performSegue(withIdentifier: "pairCharts", sender: viewModel.pairListPassData(indexPath: indexPath))
     }
     //Mark for: Segue adjustment
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -86,7 +82,7 @@ class PairListViewController: UIViewController {
             
             let PairListPassData = sender as! ChartListViewControllerPassData
             let destinationVC = segue.destination as! PairChartViewController
-            destinationVC.viewModel.PairListGetData = PairListPassData
+            destinationVC.viewModel.pairListGetData = PairListPassData
         }
     }
     //Mark for: Tableview header adjustment
@@ -134,10 +130,6 @@ extension PairListViewController : UICollectionViewDelegate, UICollectionViewDat
     }
     //Mark for: CollectionView selected cell adjustment
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedPair = viewModel.pushFavorites()[indexPath.row].pair
-        let numeratorSymbol = viewModel.pushFavorites()[indexPath.row].numeratorSymbol
-        let denominatorSymbol = viewModel.pushFavorites()[indexPath.row].denominatorSymbol
-        let PairListPassData = ChartListViewControllerPassData(selectedPair: selectedPair,numeratorSymbol: numeratorSymbol,denominatorSymbol: denominatorSymbol)
-        performSegue(withIdentifier: "pairCharts", sender: PairListPassData)
+        performSegue(withIdentifier: "pairCharts", sender: viewModel.pairListPassData(indexPath: indexPath))
     }
 }

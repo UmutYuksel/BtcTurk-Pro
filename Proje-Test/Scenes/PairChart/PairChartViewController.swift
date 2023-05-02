@@ -61,11 +61,11 @@ class PairChartViewController : UIViewController {
     }
     //Mark for: set view Title
     private func setTitle() {
-        titleLabel.title = "\(viewModel.PairListGetData.numeratorSymbol ?? "")/\(viewModel.PairListGetData.denominatorSymbol ?? "")"
+        titleLabel.title = viewModel.getPageTitle()
     }
     //Mark for: viewDidLoad get data from api func
     private func getChartDataFromAPI() {
-        viewModel.segmentControlValueChange(selectedSegmentIndex: viewModel.selectedSegmentIndex, selectedPairName: viewModel.PairListGetData.selectedPair ?? "")
+        viewModel.segmentControlValueChange(selectedSegmentIndex: viewModel.selectedSegmentIndex, selectedPairName: viewModel.pairListGetData.selectedPair ?? "")
     }
    
     private func bindViewModel() {
@@ -78,7 +78,7 @@ class PairChartViewController : UIViewController {
     //Mark for: SegmentedControl change segment action
     @IBAction func segmentedControlValueChange(_ sender: UISegmentedControl) {
         let selectedSegmentIndex = sender.selectedSegmentIndex
-        viewModel.segmentControlValueChange(selectedSegmentIndex: selectedSegmentIndex,selectedPairName: viewModel.PairListGetData.selectedPair!)
+        viewModel.segmentControlValueChange(selectedSegmentIndex: selectedSegmentIndex,selectedPairName: viewModel.pairListGetData.selectedPair!)
     }
 }
 
