@@ -20,6 +20,8 @@ class PairChartViewModel {
     var selectedDenominator : String?
     let unixTimeStamp : Int = Int(Date().timeIntervalSince1970)
     var selectedSegmentIndex = 4
+    var pairListGetData : ChartListViewControllerPassData!
+    
     
     //Mark for: Functions
     
@@ -81,6 +83,12 @@ class PairChartViewModel {
         }
         return chartDataArray
     }
+    //Mark for: Page title adjustment with segue pass data
+    func getPageTitle() -> String {
+        let pageTitle = "\(pairListGetData.numeratorSymbol ?? "")/\(pairListGetData.denominatorSymbol ?? "")"
+        return pageTitle
+    }
+    
     //Mark for: The function that is triggered when the segmentedControl's value changes
     func segmentControlValueChange(selectedSegmentIndex: Int, selectedPairName: String) {
         
@@ -109,7 +117,7 @@ class PairChartViewModel {
         let toTimeStampString = String(unixTimeStamp)
         getChartDataTime(from: fromTimeStampString, to: toTimeStampString, chartPairName: selectedPairName)
     }
-    
+    //Mark for: The enum that sets the selectedSegment return values ​​on the PairChart screen
     enum ChartTimeRange {
         case oneYear
         case sixMonths

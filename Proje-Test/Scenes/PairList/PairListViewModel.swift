@@ -9,24 +9,12 @@ import Foundation
 import UIKit
 import Toast
 
-//struct PairListSection {
-//    let title = String
-//    let cellType = String
-//    let cellHeight
-//}
-
-
-
 class PairListViewModel {
     //Mark for: Variables
     var pairFavoriteList = [String]()
     var pairList = [PairListResponseElement]()
     var filteredPairList = [PairListResponseElement]()
     var dataUpdatedCallback : (()->())?
-    var selectedPair : String?
-    var numeratorSymbol : String?
-    var denominatorSymbol : String?
-    
     
     //Mark for: Functions
     
@@ -101,6 +89,23 @@ class PairListViewModel {
         }
         return favoriteArray
     }
+    //Mark for: Segue data pass with ChartListViewControllerPassData struct
+    func pairListFavoritePassData(indexPath: IndexPath) -> ChartListViewControllerPassData {
+        let selectedPair = pushFavorites()[indexPath.row].pair
+        let numeratorSymbol = pushFavorites()[indexPath.row].numeratorSymbol
+        let denominatorSymbol = pushFavorites()[indexPath.row].denominatorSymbol
+        let pairListPassData = ChartListViewControllerPassData(selectedPair: selectedPair,numeratorSymbol: numeratorSymbol,denominatorSymbol: denominatorSymbol)
+        return pairListPassData
+    }
+    //Mark for: Segue data pass with ChartListViewControllerPassData struct
+    func pairListPassData(indexPath: IndexPath) -> ChartListViewControllerPassData {
+        let selectedPair = filteredPairList[indexPath.row].pair
+        let numeratorSymbol = filteredPairList[indexPath.row].numeratorSymbol
+        let denominatorSymbol = filteredPairList[indexPath.row].denominatorSymbol
+        let pairListPassData = ChartListViewControllerPassData(selectedPair: selectedPair,numeratorSymbol: numeratorSymbol,denominatorSymbol: denominatorSymbol)
+        return pairListPassData
+    }
+    
     //Mark for: Get favoritearray from UserDefaults
     func getFavoritesFromUserDefaults() {
         if let favoriteArray = UserDefaults.standard.array(forKey: "pairFavoriteList") as? [String] {
