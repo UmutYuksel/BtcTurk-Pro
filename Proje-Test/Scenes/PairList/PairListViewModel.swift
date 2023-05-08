@@ -32,20 +32,35 @@ class PairListViewModel {
         }
     }
     //Mark for: Get pairlist from api
+    
     func getPairList() {
         guard let apiURL = URL(string: "https://api.btcturk.com/api/v2/ticker") else {
             print("URL Hatalı")
             return
         }
-        PairListAPIManager().getPairList(url: apiURL) { pairListResponse in
-            if let pairList = pairListResponse {
-                self.pairList = pairList.data
-                let denominatorName = UserDefaults.standard.string(forKey: "selectedDenominatorName")
-                self.filterPairList(denominatorName: denominatorName ?? DenominatorName.TRY.rawValue)
-                DispatchQueue.main.async {
-                    self.dataUpdatedCallback?()
+        PairListAPIManager().getPairList(url: apiURL) { result in
+            switch result {
+            case .success(let pairListResponse):
+                if let pairList = pairListResponse?.data {
+                    self.pairList = pairList
+                    let denominatorName = UserDefaults.standard.string(forKey: "selectedDenominatorName")
+                    self.filterPairList(denominatorName: denominatorName ?? DenominatorName.TRY.rawValue)
+                    DispatchQueue.main.async {
+                        self.dataUpdatedCallback?()
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        let configToast = ToastConfiguration(
+                            direction: .bottom,
+                            autoHide: true,
+                            displayTime: 2,
+                            animationTime: 0.2
+                        )
+                        let toast = Toast.text("Grafik Verileri Getirilirken Hata Oluştu",config: configToast)
+                        toast.show()
+                    }
                 }
-            } else {
+            case .failure(let error):
                 DispatchQueue.main.async {
                     let configToast = ToastConfiguration(
                         direction: .bottom,
@@ -53,7 +68,7 @@ class PairListViewModel {
                         displayTime: 2,
                         animationTime: 0.2
                     )
-                    let toast = Toast.text("Grafik Verileri Getirilirken Hata Oluştu",config: configToast)
+                    let toast = Toast.text("\(error.localizedDescription)",config: configToast)
                     toast.show()
                 }
             }
