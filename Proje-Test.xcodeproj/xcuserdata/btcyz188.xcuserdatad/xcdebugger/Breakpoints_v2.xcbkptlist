@@ -646,8 +646,8 @@
             filePath = "Proje-Test/Scenes/PairList/PairListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "didTapFavorite(at:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -662,8 +662,8 @@
             filePath = "Proje-Test/Scenes/PairList/PairListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "getApiResult()"
             landmarkType = "7">
          </BreakpointContent>
@@ -678,8 +678,8 @@
             filePath = "Proje-Test/Scenes/PairList/PairListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "getApiResult()"
             landmarkType = "7">
          </BreakpointContent>
@@ -710,8 +710,8 @@
             filePath = "Proje-Test/Scenes/PairList/PairListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "pushFavorites()"
             landmarkType = "7">
          </BreakpointContent>
@@ -726,10 +726,118 @@
             filePath = "Proje-Test/Scenes/PairList/PairListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "pushFavorites()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6EB2337D-64AB-4DEB-A992-83A3DBC3A35C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Proje-Test/Scenes/Account/Cell/AccountTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "AccountTableViewCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "6EB2337D-64AB-4DEB-A992-83A3DBC3A35C - c67e92bfe669c58a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Proje_Test.AccountTableViewCell.cellData.getter : Swift.Array&lt;Proje_Test.AccountPresitionModel&gt;"
+                  moduleName = "Proje-Test"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/btcyz188/Desktop/Deneme/Proje-Test/Proje-Test/Scenes/Account/Cell/AccountTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "6EB2337D-64AB-4DEB-A992-83A3DBC3A35C - 9dbac68b09d44986"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Proje_Test.AccountTableViewCell.cellData.setter : Swift.Array&lt;Proje_Test.AccountPresitionModel&gt;"
+                  moduleName = "Proje-Test"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/btcyz188/Desktop/Deneme/Proje-Test/Proje-Test/Scenes/Account/Cell/AccountTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  uuid = "6EB2337D-64AB-4DEB-A992-83A3DBC3A35C - bdea6d9697325489"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Proje_Test.AccountTableViewCell.cellData.modify : Swift.Array&lt;Proje_Test.AccountPresitionModel&gt;"
+                  moduleName = "Proje-Test"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/btcyz188/Desktop/Deneme/Proje-Test/Proje-Test/Scenes/Account/Cell/AccountTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "6EB2337D-64AB-4DEB-A992-83A3DBC3A35C - ee0c499616c89edd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Proje_Test.AccountTableViewCell.cellData.modify : Swift.Array&lt;Proje_Test.AccountPresitionModel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Proje-Test"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/btcyz188/Desktop/Deneme/Proje-Test/Proje-Test/Scenes/Account/Cell/AccountTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "6EB2337D-64AB-4DEB-A992-83A3DBC3A35C - 84f8a255dc4a636f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Proje_Test.AccountTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; Proje_Test.AccountTableViewCell"
+                  moduleName = "Proje-Test"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/btcyz188/Desktop/Deneme/Proje-Test/Proje-Test/Scenes/Account/Cell/AccountTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "204">
+               </Location>
+               <Location
+                  uuid = "6EB2337D-64AB-4DEB-A992-83A3DBC3A35C - e63c8ac5b254ac8e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Proje_Test.AccountTableViewCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Proje_Test.AccountTableViewCell&gt;"
+                  moduleName = "Proje-Test"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/btcyz188/Desktop/Deneme/Proje-Test/Proje-Test/Scenes/Account/Cell/AccountTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "176">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

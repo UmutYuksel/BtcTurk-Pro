@@ -46,14 +46,27 @@ class PairChartViewModel {
     
     //Mark for: Function that pulls graphics data through the api
     func getChartsData(with urlString: String) {
-        PairChartAPIManager().getPairChart(url: URL(string: urlString)!) { pairChartResponse in
-            
-            if let pairChartList = pairChartResponse {
-                self.chartsResponse = pairChartList
-                DispatchQueue.main.async {
-                    self.dataUpdatedCallBack?(self.mapToChartModel())
+        PairChartAPIManager().getPairChart(url: URL(string: urlString)!) { result in
+            switch result {
+            case .success(let pairChartResponse):
+                if let pairChartList = pairChartResponse {
+                    self.chartsResponse = pairChartList
+                    DispatchQueue.main.async {
+                        self.dataUpdatedCallBack?(self.mapToChartModel())
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        let configToast = ToastConfiguration(
+                            direction: .bottom,
+                            autoHide: true,
+                            displayTime: 2,
+                            animationTime: 0.2
+                        )
+                        let toast = Toast.text("Grafik Verileri Getirilirken Hata Oluştu",config: configToast)
+                        toast.show()
+                    }
                 }
-            } else {
+            case .failure(let error):
                 DispatchQueue.main.async {
                     let configToast = ToastConfiguration(
                         direction: .bottom,
@@ -61,7 +74,7 @@ class PairChartViewModel {
                         displayTime: 2,
                         animationTime: 0.2
                     )
-                    let toast = Toast.text("Grafik Verileri Getirilirken Hata Oluştu",config: configToast)
+                    let toast = Toast.text("\(error.localizedDescription)",config: configToast)
                     toast.show()
                 }
             }

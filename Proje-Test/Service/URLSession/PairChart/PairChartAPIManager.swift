@@ -8,10 +8,12 @@
 import Foundation
 
 //Mark for: Get PairList scene data from API and push data PairListData
+
 struct PairChartAPIManager {
     let apiManager = APIManager<PairChartResponse>()
 
-    func getPairChart(url: URL, completion: @escaping (PairChartResponse?) -> ()) {
-        apiManager.get(url: url, completion: completion)
+    func getPairChart(url: URL, completion: @escaping (Result<PairChartResponse?, Error>) -> ()) {
+        apiManager.send(method: .get, url: url, completion: completion)
     }
 }
+
