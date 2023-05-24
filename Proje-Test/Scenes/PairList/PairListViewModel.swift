@@ -15,24 +15,28 @@ class PairListViewModel {
     var pairList = [PairListResponseElement]()
     var filteredPairList = [PairListResponseElement]()
     var dataUpdatedCallback : (()->())?
-    
+    var sortState = 0
     //Mark for: Functions
     
     //Mark for: Filter pairList from segmentedcontrol index
-    func filterPairList(denominatorName: String) {
-        if denominatorName == "ALL" {
-            filteredPairList = pairList
-        } else {
-            filteredPairList = pairList.filter { items in
-                return items.denominatorSymbol == denominatorName
+    func filterPairList(denominatorName: String,searchText: String) {
+        if searchText.isEmpty {
+            if denominatorName == "ALL" {
+                filteredPairList = pairList
+            } else {
+                filteredPairList = pairList.filter { items in
+                    return items.denominatorSymbol == denominatorName
+                }
+            } } else if searchText.isEmpty != true {
+                let uppercaseSearchText = searchText.uppercased()
+                filteredPairList = filteredPairList.filter{ $0.pair.contains(uppercaseSearchText) }
             }
-        }
         DispatchQueue.main.async {
             self.dataUpdatedCallback?()
         }
     }
-    //Mark for: Get pairlist from api
     
+    //Mark for: Get pairlist from api
     func getPairList() {
         guard let apiURL = URL(string: "https://api.btcturk.com/api/v2/ticker") else {
             print("URL Hatalı")
@@ -44,7 +48,7 @@ class PairListViewModel {
                 if let pairList = pairListResponse?.data {
                     self.pairList = pairList
                     let denominatorName = UserDefaults.standard.string(forKey: "selectedDenominatorName")
-                    self.filterPairList(denominatorName: denominatorName ?? DenominatorName.TRY.rawValue)
+                    self.filterPairList(denominatorName: denominatorName ?? DenominatorName.TRY.rawValue,searchText: "")
                     DispatchQueue.main.async {
                         self.dataUpdatedCallback?()
                     }
@@ -74,6 +78,7 @@ class PairListViewModel {
             }
         }
     }
+    
     //Mark for: TableView favorite button tap func
     func didTapFavorite(at index: Int) {
         let pair = self.filteredPairList[index]
@@ -86,11 +91,13 @@ class PairListViewModel {
         UserDefaults.standard.synchronize()
         self.dataUpdatedCallback?()
     }
+    
     //Mark for: Pair at tableview index
     func pairAtIndex(_ index: Int) -> PairListPresitionModel {
-        let crypto = self.filteredPairList[index]
-        return PairListPresitionModel(model: crypto,favoriteList: pairFavoriteList)
+        let filteredPairListData = self.filteredPairList[index]
+        return PairListPresitionModel(model: filteredPairListData,favoriteList: pairFavoriteList)
     }
+    
     //Mark for: Push favorites to viewController
     func pushFavorites() -> [PairListFavoritePresitionModel] {
         var favoriteArray = [PairListFavoritePresitionModel]()
@@ -104,6 +111,7 @@ class PairListViewModel {
         }
         return favoriteArray
     }
+    
     //Mark for: Segue data pass with ChartListViewControllerPassData struct
     func pairListFavoritePassData(indexPath: IndexPath) -> ChartListViewControllerPassData {
         let selectedPair = pushFavorites()[indexPath.row].pair
@@ -137,7 +145,8 @@ class PairListViewModel {
         case ALL = "ALL"
     }
     
-    func segmentControlValueChange(selectedSegmentIndex: Int) {
+    //Mark for: segmentedControl valueChange func
+    func segmentControlValueChange(selectedSegmentIndex: Int, searchText: String) {
         var denominatorName: DenominatorName
         
         switch selectedSegmentIndex {
@@ -151,13 +160,63 @@ class PairListViewModel {
             denominatorName = .ALL
         }
         
-        filterPairList(denominatorName: denominatorName.rawValue)
+        filterPairList(denominatorName: denominatorName.rawValue,searchText: searchText)
         
         UserDefaults.standard.set(selectedSegmentIndex, forKey: "selectedSegmentIndex")
         UserDefaults.standard.set(denominatorName.rawValue, forKey: "selectedDenominatorName")
     }
+    
+    //Mark for: sort filteredPairList by pair
+    func sortListByPairs(selectedSegmentIndex: Int, searchText: String,pairButton: UIButton) {
+        switch sortState {
+        case 0:
+            filteredPairList.sort { $0.pair < $1.pair }
+            pairButton.setImage(UIImage(named: "sort-down.png"), for: .normal)
+        case 1:
+            filteredPairList.sort { $0.pair > $1.pair }
+            pairButton.setImage(UIImage(named: "sort-up.png"), for: .normal)
+        default:
+            segmentControlValueChange(selectedSegmentIndex: selectedSegmentIndex, searchText: searchText)
+            pairButton.setImage(UIImage(named: "sort.png"), for: .normal)
+        }
+        sortState = (sortState + 1) % 3
+    }
+    
+    //Mark for: sort filteredPairList by last
+    func sortListByLast(selectedSegmentIndex: Int, searchText: String,lastButton: UIButton) {
+        switch sortState {
+        case 0:
+            filteredPairList.sort { $0.last < $1.last }
+            lastButton.setImage(UIImage(named: "sort-down.png"), for: .normal)
+        case 1:
+            filteredPairList.sort { $0.last > $1.last }
+            lastButton.setImage(UIImage(named: "sort-up.png"), for: .normal)
+        default:
+            segmentControlValueChange(selectedSegmentIndex: selectedSegmentIndex, searchText: searchText)
+            lastButton.setImage(UIImage(named: "sort.png"), for: .normal)
+        }
+        sortState = (sortState + 1) % 3
+    }
+    
+    //Mark for: stackView buttons set image func
+    func sortButtonsSetImage(lastButton: UIButton,pairButton: UIButton,searchBar: UISearchBar) {
+        lastButton.setImage(UIImage(named: "sort.png"), for: .normal)
+        pairButton.setImage(UIImage(named: "sort.png"), for: .normal)
+        searchBar.text = ""
+    }
+    
+    //Mark for: CollectionView cellForRowAt func
+    func collectionViewCellForRowAt(_ indexPath: IndexPath, _ favoriteCell: PairListFavoriteCollectionViewCell) {
+        let favoriteList = pushFavorites()[indexPath.row]
+        favoriteCell.configure(with: favoriteList)
+    }
+    
+    //Mark for: TableView cellForRowAt func
+    func tableViewCellForRowAt(_ indexPath: IndexPath, _ cell: PairListTableViewCell) {
+        let pairAtIndex = pairAtIndex(indexPath.row)
+        cell.configure(with: pairAtIndex)
+        cell.btnFavoritePressed = {
+            self.didTapFavorite(at: indexPath.row)
+        }
+    }
 }
-    
-    
-    
-

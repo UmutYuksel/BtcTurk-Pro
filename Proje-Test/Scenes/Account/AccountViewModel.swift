@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import Toast
+
 
 class AccountViewModel {
     var accountCellData = [AccountPresitionModel]()
@@ -42,6 +44,41 @@ class AccountViewModel {
         accountCellData.append(AccountPresitionModel(cellName: "Log Out", cellImage: UIImage(named: "logout.png")!))
     }
     
+    func getCellsData() {
+        setAccountCell()
+        setSecurityCell()
+    }
     
+    func numberOfRowsInSection(segmentedControl : UISegmentedControl) -> Int {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            return accountCellData.count
+        } else {
+            return securityCellData.count
+        }
+    }
+    
+    func cellForRowAt(_ indexPath: IndexPath, _ cell: AccountTableViewCell,segmentControl : UISegmentedControl) {
+        if segmentControl.selectedSegmentIndex == 0 {
+            let accountPresition = accountCellData[indexPath.row]
+            cell.lblAccount.text = accountPresition.cellName
+            cell.btnImage.image = accountPresition.cellImage
+        } else {
+            let securityPresition = securityCellData[indexPath.row]
+            cell.lblAccount.text = securityPresition.cellName
+            cell.btnImage.image = securityPresition.cellImage
+        }
+    }
+    //Mark for: tableView didSelectItemAt Func
+    func tableViewDidSelectItemAt(_ cell: AccountTableViewCell) {
+        let toastText = cell.lblAccount.text
+        let accountToast = ToastConfiguration(
+            direction: .bottom,
+            autoHide: true,
+            displayTime: 1.5,
+            animationTime: 0.2
+        )
+        let toast = Toast.text("\(toastText ?? "") Pressed",config: accountToast)
+        toast.show()
+    }
     
 }

@@ -22,53 +22,37 @@ class AccountViewController : UIViewController {
         super.viewDidLoad()
         accountTableView.dataSource = self
         accountTableView.delegate = self
-        getCellsData()
+        setButtonsData()
     }
     
-    func getCellsData() {
-        viewModel.setAccountCell()
-        viewModel.setSecurityCell()
-    }
     
+    //Mark for: segmentedControl value change function
     @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
         accountTableView.reloadData()
     }
-    
+    //Mark for: AccountViewController tableView buttons sets data 
+    func setButtonsData() {
+        viewModel.getCellsData()
+    }
 }
 
 extension AccountViewController : UITableViewDelegate , UITableViewDataSource {
+    
+    //Mark For: Adjustment how many cells in sections
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if segmentControl.selectedSegmentIndex == 0 {
-            return viewModel.accountCellData.count
-        } else {
-            return viewModel.securityCellData.count
-        }
+        return viewModel.numberOfRowsInSection(segmentedControl: segmentControl)
     }
     
+    //Mark For: TableView cells adjusment
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell", for: indexPath) as! AccountTableViewCell
-        if segmentControl.selectedSegmentIndex == 0 {
-            let accountPresition = viewModel.accountCellData[indexPath.row]
-            cell.lblAccount.text = accountPresition.cellName
-            cell.btnImage.image = accountPresition.cellImage
-        } else {
-            let securityPresition = viewModel.securityCellData[indexPath.row]
-            cell.lblAccount.text = securityPresition.cellName
-            cell.btnImage.image = securityPresition.cellImage
-        }
+        viewModel.cellForRowAt(indexPath, cell,segmentControl: segmentControl)
         return cell
     }
     
+    //Mark for: Tableview selected cell adjustment
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? AccountTableViewCell else { return }
-        let toastText = cell.lblAccount.text
-        let accountToast = ToastConfiguration(
-            direction: .bottom,
-            autoHide: true,
-            displayTime: 1.5,
-            animationTime: 0.2
-        )
-        let toast = Toast.text("\(toastText ?? "") Pressed",config: accountToast)
-        toast.show()
+        viewModel.tableViewDidSelectItemAt(cell)
     }
 }
