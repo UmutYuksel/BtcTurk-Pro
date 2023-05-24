@@ -32,37 +32,15 @@ class PairChartViewController : UIViewController {
     
     //Mark for: LineChartView adjustment func
     private func editChartView() {
-        lineChartView.backgroundColor = UIColor.chartBackground()
-        lineChartView.chartDescription.enabled = false
-        lineChartView.animate(xAxisDuration: 1.0)
-        lineChartView.setScaleEnabled(false)
-        lineChartView.leftAxis.enabled = false
-        lineChartView.xAxis.enabled = true
-        lineChartView.xAxis.labelFont = .boldSystemFont(ofSize: 12)
-        lineChartView.xAxis.labelTextColor = UIColor.white
-        lineChartView.xAxis.labelPosition = .bottom
-        lineChartView.xAxis.setLabelCount(5, force: false)
-        lineChartView.xAxis.valueFormatter = ChartDateFormatter()
-        lineChartView.rightAxis.labelFont = .boldSystemFont(ofSize: 10)
-        lineChartView.rightAxis.labelTextColor = UIColor.white
-        lineChartView.rightAxis.setLabelCount(6, force: false)
-        lineChartView.tintColor = UIColor.chartTint()
-        lineChartView.rightAxis.labelPosition = .outsideChart
-        lineChartView.xAxis.axisLineColor = .systemCyan
-        lineChartView.rightAxis.axisLineColor = UIColor.darkBlueTint()
-        lineChartView.xAxis.drawGridLinesEnabled = false
-        lineChartView.xAxis.drawAxisLineEnabled = false
-        lineChartView.leftAxis.gridColor = UIColor.gray.withAlphaComponent(0.2)
-        lineChartView.rightAxis.gridColor = UIColor.gray.withAlphaComponent(0.2)
-        lineChartView.legend.enabled = false
-        lineChartView.doubleTapToZoomEnabled = false
-        lineChartView.setViewPortOffsets(left: 20, top: 20, right: 50, bottom: 20)
+        viewModel.editLineChartView(lineChartView: lineChartView)
         lineChartView.delegate = self
     }
+    
     //Mark for: set view Title
     private func setTitle() {
         titleLabel.title = viewModel.getPageTitle()
     }
+    
     //Mark for: viewDidLoad get data from api func
     private func getChartDataFromAPI() {
         viewModel.segmentControlValueChange(selectedSegmentIndex: viewModel.selectedSegmentIndex, selectedPairName: viewModel.pairListGetData.selectedPair ?? "")
@@ -91,21 +69,7 @@ extension PairChartViewController : ChartViewDelegate {
     }
     //Mark for: Set to chart data func
     private func setGraphData(with Entities: [ChartDataEntry]) {
-        let set1 = LineChartDataSet(entries: Entities, label: "Data")
-        set1.mode = .linear
-        set1.lineWidth = 3
-        set1.drawCirclesEnabled = false
-        set1.setColor(UIColor.chartTint())
-        let gradientColors = [ChartColorTemplates.colorFromString("#141926").cgColor,
-                              ChartColorTemplates.colorFromString("#182D3E").cgColor]
-        
-        let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
-        set1.fillAlpha = 2
-        set1.fill = LinearGradientFill(gradient: gradient, angle: 90)
-        set1.drawFilledEnabled = true
-        let data = LineChartData(dataSet: set1)
-        data.setDrawValues(false)
-        lineChartView.data = data
+        viewModel.lineChartViewSetGraphData(Entities,lineChartView: lineChartView)
     }
     
 }

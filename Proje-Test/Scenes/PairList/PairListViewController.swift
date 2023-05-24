@@ -17,9 +17,14 @@ class PairListViewController: UIViewController {
     //Mark for: Variables
     @IBOutlet weak var favoriteLabel: UILabel!
     @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var pairButton: UIButton!
+    @IBOutlet weak var lastButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    
     var viewModel = PairListViewModel()
+    
     
     //Mark for: Functions
     override func viewDidLoad() {
@@ -30,34 +35,46 @@ class PairListViewController: UIViewController {
         getApiResult()
     }
     
-    @IBAction func unwindToForm(_ unwindSegue: UIStoryboardSegue) {
-        // unwind segue code goes here
-    }
+    @IBAction func unwindToForm(_ unwindSegue: UIStoryboardSegue) {}
     
     private func registerViews() {
         tableView.delegate = self
         tableView.dataSource = self
         collectionView.delegate = self
         collectionView.dataSource = self
-        tableView.sectionHeaderTopPadding = 0
     }
+    
     //Mark for: SegmentedControl adjust func
     private func adjustSegmentedControl() {
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
         segmentControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: "selectedSegmentIndex")
     }
+    
     //Mark for: Get data's from api and UserDefaults
     private func getApiResult() {
         viewModel.getFavoritesFromUserDefaults()
         viewModel.getPairList()
     }
+    
     //Mark for: SegmentedControl change segment action
     @IBAction func didChangeSegment(_ sender: UISegmentedControl) {
         let selectedSegmentIndex = sender.selectedSegmentIndex
-        viewModel.segmentControlValueChange(selectedSegmentIndex: selectedSegmentIndex)
+        viewModel.segmentControlValueChange(selectedSegmentIndex: selectedSegmentIndex,searchText: "")
+        viewModel.sortButtonsSetImage(lastButton: lastButton, pairButton: pairButton,searchBar: searchBar)
+        bindViewModel()
+    }
+    
+    //Mark for: pairButton touchUpInside func
+    @IBAction func pairSortTapped(_ sender: Any) {
+        viewModel.sortListByPairs(selectedSegmentIndex: segmentControl.selectedSegmentIndex, searchText: "",pairButton: pairButton)
         tableView.reloadData()
-        collectionView.reloadData()
+    }
+    
+    //Mark for: lastButton touchUpInside func
+    @IBAction func lastSortTapped(_ sender: Any) {
+        viewModel.sortListByLast(selectedSegmentIndex: segmentControl.selectedSegmentIndex, searchText: "",lastButton: lastButton)
+        tableView.reloadData()
     }
     
     private func  bindViewModel() {
@@ -68,72 +85,66 @@ class PairListViewController: UIViewController {
             if self.viewModel.pushFavorites().count == 0 {
                 self.collectionView.isHidden = true
                 self.favoriteLabel.isHidden = true
+                self.sortStackView.isHidden = true
             } else {
                 self.collectionView.isHidden = false
                 self.favoriteLabel.isHidden = false
+                self.sortStackView.isHidden = false
             }
         }
     }
     
     //Mark for: Tableview selected cell adjustment
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "pairCharts", sender: viewModel.pairListPassData(indexPath: indexPath))
-    }
-    //Mark for: Segue adjustment
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "pairCharts" {
-            
-            let PairListPassData = sender as! ChartListViewControllerPassData
-            let destinationVC = segue.destination as! PairChartViewController
-            destinationVC.viewModel.pairListGetData = PairListPassData
-        }
-    }
-    //Mark for: Tableview header adjustment
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
-        view.backgroundColor = UIColor.darkBlueTint()
-        let lblPairs = UILabel(frame: CGRect(x: 20, y: 0, width: view.frame.width - 20, height: 40))
-        lblPairs.textColor = .white
-        lblPairs.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        view.addSubview(lblPairs)
-        lblPairs.text = "Pairs"
-        return view
+        let pairChartViewController = storyboard?.instantiateViewController(withIdentifier: "PairChartView") as! PairChartViewController
+        pairChartViewController.viewModel.pairListGetData = viewModel.pairListPassData(indexPath: indexPath)
+        navigationController?.pushViewController(pairChartViewController, animated: true)
     }
 }
 
 extension PairListViewController : UITableViewDelegate , UITableViewDataSource {
+    
     //Mark For: TableView cells adjusment
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "PairListCell", for: indexPath) as! PairListTableViewCell
-        let pairAtIndex = viewModel.pairAtIndex(indexPath.row)
-        cell.configure(with: pairAtIndex)
-        cell.btnFavoritePressed = {
-            self.viewModel.didTapFavorite(at: indexPath.row)
-        }
+        viewModel.tableViewCellForRowAt(indexPath, cell)
         return cell
     }
+    
     //Mark For: Adjustment how many cells in sections
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.filteredPairList.count
+           return viewModel.filteredPairList.count
+    }
+}
+
+extension PairListViewController : UISearchBarDelegate {
+    
+    //Mark for: searchBar textDidChange filter func
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.segmentControlValueChange(selectedSegmentIndex: segmentControl.selectedSegmentIndex, searchText: searchText)
     }
 }
 
 extension PairListViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+    
     //Mark For: Adjustment how many cells in sections
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.pushFavorites().count
     }
+    
     //Mark For: CollectionView cells adjusment
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let favoriteCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PairListFavoriteCell", for: indexPath) as! PairListFavoriteCollectionViewCell
-        let favoriteList = viewModel.pushFavorites()[indexPath.row]
-        favoriteCell.configure(with: favoriteList)
+        viewModel.collectionViewCellForRowAt(indexPath, favoriteCell)
         return favoriteCell
     }
+    
     //Mark for: CollectionView selected cell adjustment
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "pairCharts", sender: viewModel.pairListPassData(indexPath: indexPath))
+        let pairChartViewController = storyboard?.instantiateViewController(withIdentifier: "PairChartView") as! PairChartViewController
+        pairChartViewController.viewModel.pairListGetData = viewModel.pairListPassData(indexPath: indexPath)
+        navigationController?.pushViewController(pairChartViewController, animated: true)
     }
 }
+
+
