@@ -18,6 +18,7 @@ class PairListViewController: UIViewController {
     @IBOutlet weak var favoriteLabel: UILabel!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var sortStackView: UIStackView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pairButton: UIButton!
     @IBOutlet weak var lastButton: UIButton!
@@ -67,21 +68,28 @@ class PairListViewController: UIViewController {
     
     //Mark for: pairButton touchUpInside func
     @IBAction func pairSortTapped(_ sender: Any) {
-        viewModel.sortListByPairs(selectedSegmentIndex: segmentControl.selectedSegmentIndex, searchText: "",pairButton: pairButton)
+        viewModel.sortListByPairs(selectedSegmentIndex: segmentControl.selectedSegmentIndex, searchText: "")
+        viewModel.setSortingButtonImageCallback = { image in
+            self.pairButton.setImage(image, for: .normal)
+        }
         tableView.reloadData()
     }
     
     //Mark for: lastButton touchUpInside func
     @IBAction func lastSortTapped(_ sender: Any) {
-        viewModel.sortListByLast(selectedSegmentIndex: segmentControl.selectedSegmentIndex, searchText: "",lastButton: lastButton)
+        viewModel.sortListByLast(selectedSegmentIndex: segmentControl.selectedSegmentIndex, searchText: "")
+        viewModel.setSortingButtonImageCallback = { image in
+            self.lastButton.setImage(image, for: .normal)
+        }
         tableView.reloadData()
-    }
+    }    
     
     private func  bindViewModel() {
         viewModel.dataUpdatedCallback = { [weak self] in
             guard let self = self else { return }
             self.tableView.reloadData()
             self.collectionView.reloadData()
+            
             if self.viewModel.pushFavorites().count == 0 {
                 self.collectionView.isHidden = true
                 self.favoriteLabel.isHidden = true

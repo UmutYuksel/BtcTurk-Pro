@@ -32,7 +32,31 @@ class PairChartViewController : UIViewController {
     
     //Mark for: LineChartView adjustment func
     private func editChartView() {
-        viewModel.editLineChartView(lineChartView: lineChartView)
+        lineChartView.backgroundColor = UIColor.chartBackground()
+        lineChartView.chartDescription.enabled = false
+        lineChartView.animate(xAxisDuration: 1.0)
+        lineChartView.setScaleEnabled(false)
+        lineChartView.leftAxis.enabled = false
+        lineChartView.xAxis.enabled = true
+        lineChartView.xAxis.labelFont = .boldSystemFont(ofSize: 12)
+        lineChartView.xAxis.labelTextColor = UIColor.white
+        lineChartView.xAxis.labelPosition = .bottom
+        lineChartView.xAxis.setLabelCount(5, force: false)
+        lineChartView.xAxis.valueFormatter = ChartDateFormatter()
+        lineChartView.rightAxis.labelFont = .boldSystemFont(ofSize: 10)
+        lineChartView.rightAxis.labelTextColor = UIColor.white
+        lineChartView.rightAxis.setLabelCount(6, force: false)
+        lineChartView.tintColor = UIColor.chartTint()
+        lineChartView.rightAxis.labelPosition = .outsideChart
+        lineChartView.xAxis.axisLineColor = .systemCyan
+        lineChartView.rightAxis.axisLineColor = UIColor.darkBlueTint()
+        lineChartView.xAxis.drawGridLinesEnabled = false
+        lineChartView.xAxis.drawAxisLineEnabled = false
+        lineChartView.leftAxis.gridColor = UIColor.gray.withAlphaComponent(0.2)
+        lineChartView.rightAxis.gridColor = UIColor.gray.withAlphaComponent(0.2)
+        lineChartView.legend.enabled = false
+        lineChartView.doubleTapToZoomEnabled = false
+        lineChartView.setViewPortOffsets(left: 20, top: 20, right: 50, bottom: 20)
         lineChartView.delegate = self
     }
     
@@ -69,7 +93,21 @@ extension PairChartViewController : ChartViewDelegate {
     }
     //Mark for: Set to chart data func
     private func setGraphData(with Entities: [ChartDataEntry]) {
-        viewModel.lineChartViewSetGraphData(Entities,lineChartView: lineChartView)
+        let chartData = LineChartDataSet(entries: Entities, label: "Data")
+        chartData.mode = .linear
+        chartData.lineWidth = 3
+        chartData.drawCirclesEnabled = false
+        chartData.setColor(UIColor.chartTint())
+        let gradientColors = [ChartColorTemplates.colorFromString("#141926").cgColor,
+                              ChartColorTemplates.colorFromString("#182D3E").cgColor]
+        
+        let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
+        chartData.fillAlpha = 2
+        chartData.fill = LinearGradientFill(gradient: gradient, angle: 90)
+        chartData.drawFilledEnabled = true
+        let data = LineChartData(dataSet: chartData)
+        data.setDrawValues(false)
+        lineChartView.data = data
     }
     
 }

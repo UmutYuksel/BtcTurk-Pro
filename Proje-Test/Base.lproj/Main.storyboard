@@ -102,7 +102,7 @@
                             <constraint firstItem="ncZ-BX-iqf" firstAttribute="leading" secondItem="hZg-ye-DOz" secondAttribute="leading" id="zHG-Kv-Q8q"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Account" image="icons8-male-user-32" id="SD4-XU-CJi"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="male-user" id="SD4-XU-CJi"/>
                     <connections>
                         <outlet property="accountTableView" destination="ncZ-BX-iqf" id="ARX-LD-Rk9"/>
                         <outlet property="segmentControl" destination="g6N-O7-mKK" id="BXK-Zw-Ecz"/>
@@ -396,7 +396,7 @@
                         <outlet property="pairButton" destination="zuT-NP-yX5" id="XvL-C5-ELh"/>
                         <outlet property="searchBar" destination="Lv9-bF-6c4" id="u50-bQ-3sF"/>
                         <outlet property="segmentControl" destination="7Eh-QR-up6" id="9F8-ej-zS6"/>
-                        <outlet property="sortStackView" destination="zcr-ar-UY5" id="6J1-7A-8zv"/>
+                        <outlet property="sortStackView" destination="zcr-ar-UY5" id="yTB-PL-Io0"/>
                         <outlet property="tableView" destination="Kvu-vA-rfq" id="hMT-ct-8F3"/>
                     </connections>
                 </viewController>
@@ -527,7 +527,7 @@
         <scene sceneID="lY6-vt-Hks">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="NKD-tj-kFn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Pairs" image="icons8-scatter-32" id="r06-dg-xih"/>
+                    <tabBarItem key="tabBarItem" title="Pairs" image="scatter" id="r06-dg-xih"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4MW-gP-D59">
                         <autoresizingMask key="autoresizingMask"/>
@@ -547,8 +547,8 @@
         <image name="arrow.left" catalog="system" width="128" height="95"/>
         <image name="btcturk-seeklogo.com" width="113.55000305175781" height="150"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
-        <image name="icons8-male-user-32" width="32" height="32"/>
-        <image name="icons8-scatter-32" width="32" height="32"/>
+        <image name="male-user" width="32" height="32"/>
+        <image name="scatter" width="32" height="32"/>
         <image name="sort" width="16" height="16"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
     </resources>

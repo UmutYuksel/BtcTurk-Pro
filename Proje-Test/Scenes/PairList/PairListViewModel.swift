@@ -15,6 +15,7 @@ class PairListViewModel {
     var pairList = [PairListResponseElement]()
     var filteredPairList = [PairListResponseElement]()
     var dataUpdatedCallback : (()->())?
+    var setSortingButtonImageCallback : ((UIImage)->())?
     var sortState = 0
     //Mark for: Functions
     
@@ -167,35 +168,39 @@ class PairListViewModel {
     }
     
     //Mark for: sort filteredPairList by pair
-    func sortListByPairs(selectedSegmentIndex: Int, searchText: String,pairButton: UIButton) {
+    func sortListByPairs(selectedSegmentIndex: Int, searchText: String) {
+        let image : UIImage
         switch sortState {
         case 0:
             filteredPairList.sort { $0.pair < $1.pair }
-            pairButton.setImage(UIImage(named: "sort-down.png"), for: .normal)
+            image = UIImage(named: "sort-down.png")!
         case 1:
             filteredPairList.sort { $0.pair > $1.pair }
-            pairButton.setImage(UIImage(named: "sort-up.png"), for: .normal)
+            image = UIImage(named: "sort-up.png")!
         default:
             segmentControlValueChange(selectedSegmentIndex: selectedSegmentIndex, searchText: searchText)
-            pairButton.setImage(UIImage(named: "sort.png"), for: .normal)
+            image = UIImage(named: "sort.png")!
         }
         sortState = (sortState + 1) % 3
+        setSortingButtonImageCallback?(image)
     }
     
     //Mark for: sort filteredPairList by last
-    func sortListByLast(selectedSegmentIndex: Int, searchText: String,lastButton: UIButton) {
+    func sortListByLast(selectedSegmentIndex: Int, searchText: String) {
+        let image : UIImage
         switch sortState {
         case 0:
             filteredPairList.sort { $0.last < $1.last }
-            lastButton.setImage(UIImage(named: "sort-down.png"), for: .normal)
+            image = UIImage(named: "sort-down.png")!
         case 1:
             filteredPairList.sort { $0.last > $1.last }
-            lastButton.setImage(UIImage(named: "sort-up.png"), for: .normal)
+            image = UIImage(named: "sort-up.png")!
         default:
             segmentControlValueChange(selectedSegmentIndex: selectedSegmentIndex, searchText: searchText)
-            lastButton.setImage(UIImage(named: "sort.png"), for: .normal)
+            image = UIImage(named: "sort.png")!
         }
         sortState = (sortState + 1) % 3
+        setSortingButtonImageCallback?(image)
     }
     
     //Mark for: stackView buttons set image func
